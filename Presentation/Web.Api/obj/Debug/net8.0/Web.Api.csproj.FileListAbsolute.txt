@@ -141,3 +141,5 @@ C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\obj\Debug\net8.0\ref
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\obj\Debug\net8.0\Web.Api.pdb
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\obj\Debug\net8.0\Web.Api.genruntimeconfig.cache
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\obj\Debug\net8.0\ref\Web.Api.dll
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\Application.dll
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\Application.pdb

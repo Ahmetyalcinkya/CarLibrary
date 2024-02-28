@@ -16,3 +16,5 @@ C:\Users\ahmet\source\repos\CarLibrary\Infrastructure\Persistence\obj\Debug\net8
 C:\Users\ahmet\source\repos\CarLibrary\Infrastructure\Persistence\obj\Debug\net8.0\Persistence.pdb
 C:\Users\ahmet\source\repos\CarLibrary\Infrastructure\Persistence\obj\Debug\net8.0\Persistence.genruntimeconfig.cache
 C:\Users\ahmet\source\repos\CarLibrary\Infrastructure\Persistence\obj\Debug\net8.0\ref\Persistence.dll
+C:\Users\ahmet\source\repos\CarLibrary\Infrastructure\Persistence\bin\Debug\net8.0\Application.dll
+C:\Users\ahmet\source\repos\CarLibrary\Infrastructure\Persistence\bin\Debug\net8.0\Application.pdb

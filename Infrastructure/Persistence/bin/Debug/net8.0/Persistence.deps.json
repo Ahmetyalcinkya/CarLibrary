@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Persistence/1.0.0": {
         "dependencies": {
+          "Application": "1.0.0",
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.2",
           "Microsoft.EntityFrameworkCore.Design": "8.0.2",
@@ -947,6 +948,14 @@
           }
         }
       },
+      "Application/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "runtime": {
+          "Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "dependencies": {
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.2"
@@ -1508,6 +1517,11 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Domain/1.0.0": {
       "type": "project",
