@@ -31,7 +31,7 @@ namespace Web.Api.Controllers
             return Ok(values);
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAboutByID(int id)
+        public async Task<IActionResult> GetAboutById(int id)
         {
             var value = await _getAboutByIdQueryHandler.Handle(new GetAboutByIdQuery(id));
             return Ok(value);
