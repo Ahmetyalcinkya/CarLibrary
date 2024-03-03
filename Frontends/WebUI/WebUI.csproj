@@ -6,4 +6,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\carbook-master\.DS_Store" />
+    <None Include="wwwroot\carbook-master\css\.DS_Store" />
+    <None Include="wwwroot\carbook-master\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\carbook-master\css\css\.DS_Store" />
+    <None Include="wwwroot\carbook-master\fonts\.DS_Store" />
+    <None Include="wwwroot\carbook-master\fonts\flaticon\.DS_Store" />
+    <None Include="wwwroot\carbook-master\fonts\flaticon\font\.DS_Store" />
+    <None Include="wwwroot\carbook-master\fonts\ionicons\fonts\.DS_Store" />
+    <None Include="wwwroot\carbook-master\images\.DS_Store" />
+    <None Include="wwwroot\carbook-master\js\.DS_Store" />
+    <None Include="wwwroot\carbook-master\scss\.DS_Store" />
+    <None Include="wwwroot\carbook-master\scss\bootstrap\.DS_Store" />
+  </ItemGroup>
+
 </Project>
