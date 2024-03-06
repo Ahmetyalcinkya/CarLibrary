@@ -143,3 +143,6 @@ C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\obj\Debug\net8.0\Web
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\obj\Debug\net8.0\ref\Web.Api.dll
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\Application.dll
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\Application.pdb
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\MediatR.dll
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\MediatR.Contracts.dll
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
