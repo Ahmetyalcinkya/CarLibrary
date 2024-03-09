@@ -13,6 +13,8 @@ namespace WebUI.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.v1 = "Cars";
+            ViewBag.v2 = "Choose Your Car";
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7199/api/Cars/GetCarsWithBrandName");
             if (responseMessage.IsSuccessStatusCode)

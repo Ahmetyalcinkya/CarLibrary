@@ -6,8 +6,8 @@ namespace WebUI.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.v1 = "Services";
-            ViewBag.v2 = "Our Services";
+            ViewBag.v1 = "About Us";
+            ViewBag.v2 = "Vision & Mission";
             return View();
         }
     }
