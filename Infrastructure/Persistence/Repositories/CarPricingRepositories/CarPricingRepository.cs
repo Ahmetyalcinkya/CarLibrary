@@ -20,7 +20,7 @@ namespace Persistence.Repositories.CarPricingRepositories
 
 		public List<CarPricing> GetCarPricingsWithCars()
 		{
-			var values = _context.CarPricings.Include(_cp => _cp.Car).ThenInclude(_c => _c.Brand).Include(_b => _b.Pricing).ToList();
+			var values = _context.CarPricings.Include(_cp => _cp.Car).ThenInclude(_c => _c.Brand).Include(_b => _b.Pricing).Where(_c => _c.PricingID == 2).ToList();
 			return values;
 		}
 	}
