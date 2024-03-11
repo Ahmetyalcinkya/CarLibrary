@@ -10,5 +10,6 @@ namespace Application.Interfaces.BlogInterfaces
     public interface IBlogRepository
     {
         List<Blog> GetLastThreeBlogsWithAuthors();
+        List<Blog> GetAllBlogsWithAuthor();
     }
 }

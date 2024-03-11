@@ -18,7 +18,7 @@ namespace WebUI.ViewComponents.BlogViewComponents
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultLastThreeBlogWithAuthors>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultLastThreeBlogWithAuthorsDto>>(jsonData);
                 return View(values);
             }
             return View();

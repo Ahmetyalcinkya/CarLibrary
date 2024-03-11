@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dto.BlogDtos
 {
-    public class ResultLastThreeBlogWithAuthors
+    public class ResultLastThreeBlogWithAuthorsDto
     {
         public int BlogID { get; set; }
         public string Title { get; set; }

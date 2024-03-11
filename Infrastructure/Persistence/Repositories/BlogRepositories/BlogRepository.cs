@@ -18,10 +18,15 @@ namespace Persistence.Repositories.BlogRepositories
             _context = context;
         }
 
-        public List<Blog> GetLastThreeBlogsWithAuthors()
+		public List<Blog> GetLastThreeBlogsWithAuthors()
         {
             var values = _context.Blogs.Include(_b => _b.Author).OrderByDescending(_b => _b.BlogID).Take(3).ToList();
             return values;
         }
+		public List<Blog> GetAllBlogsWithAuthor()
+		{
+			var values = _context.Blogs.Include(_b => _b.Author).ToList();
+            return values;
+		}
     }
 }
