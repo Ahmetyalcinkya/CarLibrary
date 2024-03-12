@@ -27,6 +27,12 @@ namespace Web.Api.Controllers
             var value = await _mediator.Send(new GetTagCloudByIdQuery(id));
             return Ok(value);
         }
+        [HttpGet("GetTagCloudByBlogId")]
+        public async Task<IActionResult> GetTagCloudByBlogId(int id)
+        {
+            var values = await _mediator.Send(new GetTagCloudsByBlogIdQuery(id));
+            return Ok(values);
+        }
         [HttpPost]
         public async Task<IActionResult> CreateTagCloud(CreateTagCloudCommand command)
         {
