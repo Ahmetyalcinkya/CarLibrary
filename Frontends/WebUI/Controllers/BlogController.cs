@@ -31,6 +31,7 @@ namespace WebUI.Controllers
 		{
             ViewBag.v1 = "Blogs";
             ViewBag.v2 = "Blog Details & Comments";
+            ViewBag.blogId = id;
             return View();
 		}
 	}
