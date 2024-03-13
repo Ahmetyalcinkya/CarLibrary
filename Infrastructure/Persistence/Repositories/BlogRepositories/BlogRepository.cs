@@ -28,5 +28,11 @@ namespace Persistence.Repositories.BlogRepositories
 			var values = _context.Blogs.Include(_b => _b.Author).ToList();
             return values;
 		}
+
+        public List<Blog> GetBlogsAuthorById(int id)
+        {
+            var values = _context.Blogs.Include(_b => _b.Author).Where(_a => _a.BlogID == id).ToList();
+            return values;
+        }
     }
 }

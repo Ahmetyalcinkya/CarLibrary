@@ -38,6 +38,12 @@ namespace Web.Api.Controllers
         {
             var values = await _mediator.Send(new GetAllBlogsWithAuthorQuery());
             return Ok(values);
+        } 
+        [HttpGet("GetBlogsAuthorById")]
+        public async Task<IActionResult> GetBlogsAuthorById(int id)
+        {
+            var values = await _mediator.Send(new GetBlogsAuthorByIdQuery(id));
+            return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> CreateBlog(CreateBlogCommand command)

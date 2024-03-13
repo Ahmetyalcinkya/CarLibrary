@@ -24,7 +24,7 @@ namespace Application.Features.Mediator.Handlers.BlogHandlers
 			return values.Select(value => new GetAllBlogsWithAuthorQueryResult
 			{
 				AuthorID = value.AuthorID,
-				//AuthorName = value.Author.Name,
+				AuthorName = value.Author.Name,
 				BlogID = value.BlogID,
 				CategoryID = value.CategoryID,
 				//CategoryName = value.Category.Name,
@@ -32,8 +32,9 @@ namespace Application.Features.Mediator.Handlers.BlogHandlers
 				CreatedDate = value.CreatedDate,
 				Title = value.Title,
 				Description = value.Description,
+				AuthorDescription = value.Author.Description,
+				AuthorImageUrl = value.Author.ImageUrl,
 			}).ToList();
-
 		}
 	}
 }
