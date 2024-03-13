@@ -4,17 +4,20 @@ using Application.Features.CQRS.Handlers.BrandHandlers;
 using Application.Features.CQRS.Handlers.CarHandlers;
 using Application.Features.CQRS.Handlers.CategoryHandlers;
 using Application.Features.CQRS.Handlers.ContactHandlers;
+using Application.Features.RepositoryPattern;
 using Application.Interfaces;
 using Application.Interfaces.BlogInterfaces;
 using Application.Interfaces.CarInterfaces;
 using Application.Interfaces.CarPricingInterfaces;
 using Application.Interfaces.TagCloudInterfaces;
 using Application.Services;
+using Domain.Entities;
 using Persistence.Context;
 using Persistence.Repositories;
 using Persistence.Repositories.BlogRepositories;
 using Persistence.Repositories.CarPricingRepositories;
 using Persistence.Repositories.CarRepositories;
+using Persistence.Repositories.CommentRepositories;
 using Persistence.Repositories.TagCloudRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +29,7 @@ builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
 builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
+builder.Services.AddScoped(typeof(IGenericRepository<Comment>), typeof(CommentRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
