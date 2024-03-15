@@ -1,8 +1,64 @@
-﻿
+﻿@model List<ResultCarWithBrandsDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
-<h1>Car List</h1>
+<div class="page-content">
+    <div class="container-fluid">
 
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Car List</h4>
+                        <p class="card-subtitle mb-4">
+                            You can add, delete, update, search, and list cars on this page.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Brand</th>
+                                        <th>Model</th>
+                                        <th>Transmission</th>
+                                        <th>MileAge</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                        <th>Details</th>
+                                        <th>Add Property</th>
+                                        <th>See on the Website</th>
+                                        <th>Price Information</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach(var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.BrandName</td>
+                                        <td>@item.Model</td>
+                                        <td>@item.Transmission</td>
+                                        <td>@item.MileAge</td>
+                                        <td><a href="/AdminCar/RemoveCar/@item.CarID" class="btn btn-outline-danger">Delete</a></td>
+                                        <td><a href="/AdminCar/UpdateCar/@item.CarID" class="btn btn-outline-success">Update</a></td>
+                                        <td><a href="/Admin/AdminCarFeatureDetail/Index/@item.CarID" class="btn btn-outline-dark">Details</a></td>
+                                            <td><a href="/Admin/AdminCarFeatureDetail/CreateFeatureByCarID" class="btn btn-outline-info">Add Property</a></td>
+                                            <td><a href="/CarList/CarDetail/@item.CarID" class="btn btn-outline-warning">See on the Website</a></td>
+                                            <td><a href="/CarList/CarDetail/@item.CarID" class="btn btn-outline-secondary">Price Information</a></td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="/AdminCar/CreateCar/" class="btn btn-outline-primary">Add new Car</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
