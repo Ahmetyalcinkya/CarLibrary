@@ -1,0 +1,63 @@
+﻿@model CreateCarDto
+@{
+    ViewData["Title"] = "CreateCar";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Add New Car</h4>
+                        <p class="card-subtitle mb-4">You must fill in the information about the vehicle completely. After data entry, you can complete your process by clicking the save button.</p>
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputBrand">Brand</label>
+                                @Html.DropDownListFor(value => value.BrandID, (List<SelectListItem>)ViewBag.BrandValues, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputModel">Model</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Model" placeholder="Car model...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputListCoverImage">List Image Url</label>
+                                <input type="text" class="form-control" id="exampleInputListCoverImage" asp-for="ListCoverImageUrl" placeholder="Enter list image url...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputMileAge">Mile Age</label>
+                                <input type="text" class="form-control" id="exampleInputMileAge" asp-for="MileAge" placeholder="Enter the mile age...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTransmission">Transmission</label>
+                                <input type="text" class="form-control" id="exampleInputTransmission" asp-for="Transmission" placeholder="Transmission type...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSeat">Seat</label>
+                                <input type="number" class="form-control" id="exampleInputSeat" asp-for="Seat" placeholder="Pick seat count">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputLuggage">Luggage</label>
+                                <input type="number" class="form-control" id="exampleInputLuggage" asp-for="Luggage" placeholder="Pick luggage count">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFuel">Fuel</label>
+                                <input type="text" class="form-control" id="exampleInputFuel" asp-for="Fuel" placeholder="Fuel type...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputCoverImage">Cover Image Url</label>
+                                <input type="text" class="form-control" id="exampleInputCoverImage" asp-for="CarCoverImageUrl" placeholder="Enter cover image url...">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save Car</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
