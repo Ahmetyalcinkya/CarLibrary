@@ -65,7 +65,7 @@ namespace Web.Api.Controllers
             await _updateCarCommandHandler.Handle(command);
             return Ok("Car updated!");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {
             await _removeCarCommandHandler.Handle(new RemoveCarCommand(id));

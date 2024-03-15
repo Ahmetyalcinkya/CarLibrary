@@ -3,6 +3,7 @@ using Dto.CarDtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace WebUI.Controllers
 {
@@ -40,6 +41,29 @@ namespace WebUI.Controllers
                                                      Value = value.BrandID.ToString()
                                                  }).ToList();
             ViewBag.BrandValues = brandValues;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateCar(CreateCarDto createCar) 
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createCar);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8,"application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7199/api/Cars", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public async Task<IActionResult> RemoveCar(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:7199/api/Cars/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }
