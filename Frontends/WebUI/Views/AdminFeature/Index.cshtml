@@ -27,18 +27,29 @@
                                         <th>Update</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach(var item in Model)
+                                @if(Model.Count == 0)
                                     {
-                                        count++;
-                                        <tr>
-                                        <th scope="row">@count</th>
-                                        <td>@item.Name</td>
-                                        <td><a href="/AdminFeature/RemoveFeature/@item.FeatureID" class="btn btn-outline-danger">Delete</a></td>
-                                        <td><a href="/AdminFeature/UpdateFeature/@item.FeatureID" class="btn btn-outline-success">Update</a></td>
-                                    </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td><h4>Herhangi bir özellik bulunmuyor</h4></td>
+                                            </tr>
+                                        </tbody>
                                     }
-                                </tbody>
+                                    else
+                                    {
+                                        <tbody>
+                                            @foreach(var item in Model)
+                                            {
+                                                count++;
+                                                <tr>
+                                                    <th scope="row">@count</th>
+                                                    <td>@item.Name</td>
+                                                    <td><a href="/AdminFeature/RemoveFeature/@item.FeatureID" class="btn btn-outline-danger">Delete</a></td>
+                                                    <td><a href="/AdminFeature/UpdateFeature/@item.FeatureID" class="btn btn-outline-success">Update</a></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    }
                             </table>
                             <a href="/AdminFeature/CreateFeature/" class="btn btn-outline-primary">Add new Feature</a>
                         </div>
