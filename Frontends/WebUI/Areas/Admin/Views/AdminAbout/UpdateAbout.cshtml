@@ -1,0 +1,40 @@
+﻿@model UpdateAboutDto
+
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Update About Information</h4>
+                        <p class="card-subtitle mb-4">Enter the About information that you want to add in the box below. After data entry, you can complete your process by clicking the save button. After the data entry, check the About count! The About count shouldn't be greater than 1! Otherwise, the About information will have been broken. </p>
+
+                        <form method="post">
+                            <input type="hidden" asp-for="AboutID" />
+                            <div class="form-group">
+                                <label for="exampleInputAboutTitle">About Title</label>
+                                <input type="text" class="form-control" id="exampleInputAboutTitle" asp-for="Title" placeholder="About title...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputAboutDescription">About Description</label>
+                                <textarea rows="5" asp-for="Description" class="form-control" placeholder="About description..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputAboutImageUrl">About Video Description</label>
+                                <input type="text" class="form-control" id="exampleInputAboutImageUrl" asp-for="ImageUrl" placeholder="About Image Url...">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Update About Information</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
