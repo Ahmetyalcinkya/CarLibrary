@@ -1,0 +1,63 @@
+﻿@model List<ResultAuthorDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Author List</h4>
+                        <p class="card-subtitle mb-4">
+                            You can customize the author informations below. Fill all the blanks. Otherwise, the theme doesn't work properly.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name-Surname</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                        <th>Blogs of the Auhor</th>
+                                    </tr>
+                                </thead>
+                                @if (Model.Count == 0)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td><h4>There is nothing to show here yet!</h4></td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td><img src="@item.ImageUrl" width="50" height="50" class="rounded-circle mx-2" /> @item.Name</td>
+                                            <td><a href="/Admin/AdminAuthor/RemoveAuthor/@item.AuthorID" class="btn btn-outline-danger">Delete</a></td>
+                                            <td><a href="/Admin/AdminAuthor/UpdateAuthor/@item.AuthorID" class="btn btn-outline-success">Update</a></td>
+                                            <td><a href="/Admin/AdminAuthor/#/@item.AuthorID" class="btn btn-outline-dark">Blogs of the Auhor</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="/Admin/AdminAuthor/CreateAuthor/" class="btn btn-outline-primary">Add new Author</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
