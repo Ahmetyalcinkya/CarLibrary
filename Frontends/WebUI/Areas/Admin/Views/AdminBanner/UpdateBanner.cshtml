@@ -1,7 +1,7 @@
-﻿@model CreateBannerDto
+﻿@model UpdateBannerDto
 
 @{
-    ViewData["Title"] = "CreateBanner";
+    ViewData["Title"] = "UpdateBanner";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -16,6 +16,7 @@
                         <p class="card-subtitle mb-4">Enter the banner information that you want to add in the box below. After data entry, you can complete your process by clicking the save button. After the data entry, check the banner count! The banner count shouldn't be greater than 1! Otherwise, the banner information will have been broken. </p>
 
                         <form method="post">
+                            <input type="hidden" asp-for="BannerID" />
                             <div class="form-group">
                                 <label for="exampleInputBannerTitle">Banner Title</label>
                                 <input type="text" class="form-control" id="exampleInputBannerTitle" asp-for="Title" placeholder="Banner title...">
@@ -32,7 +33,7 @@
                                 <label for="exampleInputBannerVideoUrl">Banner Video Url</label>
                                 <input type="text" class="form-control" id="exampleInputBannerVideoUrl" asp-for="VideoUrl" placeholder="Banner video Youtube Embed link...">
                             </div>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save Banner Information</button>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Update Banner Information</button>
                         </form>
                     </div>
                 </div>

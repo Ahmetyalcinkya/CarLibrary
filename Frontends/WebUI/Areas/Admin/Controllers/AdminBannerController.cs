@@ -49,6 +49,34 @@ namespace WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+        [HttpGet]
+        [Route("UpdateBanner/{id}")]
+        public async Task<IActionResult> UpdateBanner(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7199/api/Banners/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<UpdateBannerDto>(jsonData);
+                return View(value);
+            }
+            return View();
+        }
+        [HttpPost]
+        [Route("UpdateBanner/{id}")]
+        public async Task<IActionResult> UpdateBanner(UpdateBannerDto updateBanner)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateBanner);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync("https://localhost:7199/api/Banners/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "AdminBanner", new { area = "Admin" });
+            }
+            return View();
+        }
 
         [Route("RemoveBanner/{id}")]
         public async Task<IActionResult> RemoveBanner(int id)
