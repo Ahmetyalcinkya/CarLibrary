@@ -1,0 +1,31 @@
+﻿@model CreateCategoryDto
+
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Add New Category</h4>
+                        <p class="card-subtitle mb-4">Enter the Category information that you want to add in the box below. After data entry, you can complete your process by clicking the save button.</p>
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputCategoryName">Category Name </label>
+                                <input type="text" class="form-control" id="exampleInputCategoryName" asp-for="Name" placeholder="Category name...">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save Category</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,61 @@
+﻿@model List<ResultCategoryDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog Category List</h4>
+                        <p class="card-subtitle mb-4">
+                            You can customize the Category information below.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Category Name</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                        <th>Blogs of the Category</th>
+                                    </tr>
+                                </thead>
+                                @if (Model.Count == 0)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td><h4>There is nothing to show here yet!</h4></td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Name</td>
+                                            <td><a href="/Admin/AdminCategory/RemoveCategory/@item.CategoryID" class="btn btn-outline-danger">Delete</a></td>
+                                            <td><a href="/Admin/AdminCategory/UpdateCategory/@item.CategoryID" class="btn btn-outline-success">Update</a></td>
+                                            <td><a href="/Admin/AdminCategory/RemoveCategory/@item.CategoryID" class="btn btn-outline-dark">Blogs of the Category</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="/Admin/AdminCategory/CreateCategory/" class="btn btn-outline-primary">Add new Category</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
