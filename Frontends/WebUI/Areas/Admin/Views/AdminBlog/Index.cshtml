@@ -26,7 +26,6 @@
                                         <th>Category</th>
                                         <th>Date</th>
                                         <th>Delete</th>
-                                        <th>Update</th>
                                         <th>Go to blog</th>
                                         <th>Blog comments</th>
                                     </tr>
@@ -50,9 +49,8 @@
                                             <td>@item.CategoryName</td>
                                             <td>@item.CreatedDate</td>
                                             <td><a href="/Admin/AdminBlog/RemoveBlog/@item.BlogID" class="btn btn-outline-danger">Delete</a></td>
-                                                <td><a href="/Admin/AdminBlog/UpdateBlog/@item.BlogID" class="btn btn-outline-success">Update</a></td>
-                                                <td><a href="/Admin/AdminBlog/RemoveBlog/@item.BlogID" class="btn btn-outline-dark">Go to Blog</a></td>
-                                                <td><a href="/Admin/AdminBlog/RemoveBlog/@item.BlogID" class="btn btn-outline-dark">Comments</a></td>
+                                                <td><a href="/Blog/BlogDetail/@item.BlogID" class="btn btn-outline-dark">Go to Blog</a></td>
+                                                <td><a href="/Admin/AdminBlog/BlogListByBlogID/@item.BlogID" class="btn btn-outline-dark">Comments</a></td>
                                         </tr>
                                     }
                                 </tbody>

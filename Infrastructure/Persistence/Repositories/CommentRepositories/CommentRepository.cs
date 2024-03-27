@@ -33,6 +33,7 @@ namespace Persistence.Repositories.CommentRepositories
             return _context.Comments.Find(id);
         }
 
+
         public void Remove(Comment comment)
         {
             var value = _context.Comments.Find(comment.CommentID);
@@ -44,6 +45,10 @@ namespace Persistence.Repositories.CommentRepositories
         {
             _context.Comments.Update(entity);
             _context.SaveChanges();
+        }
+        public List<Comment> GetCommentByBlogId(int id)
+        {
+           return _context.Set<Comment>().Where(_c => _c.BlogID == id).ToList();
         }
     }
 }
