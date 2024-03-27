@@ -1,0 +1,67 @@
+﻿@model List<ResultAllBlogsWithAuthorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog List & Operations</h4>
+                        <p class="card-subtitle mb-4">
+                            You can remove and update the blogs list. The admin cannot add a new blog. If you want to add a blog into the system you should login to system as an author.
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>Date</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                        <th>Go to blog</th>
+                                        <th>Blog comments</th>
+                                    </tr>
+                                </thead>
+                                @if (Model.Count == 0)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td><h4>There is nothing to show here yet!</h4></td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                            count++;
+                                            <tr>
+                                            <td>@count</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.AuthorName</td>
+                                            <td>@item.CategoryName</td>
+                                            <td>@item.CreatedDate</td>
+                                            <td><a href="/Admin/AdminBlog/RemoveBlog/@item.BlogID" class="btn btn-outline-danger">Delete</a></td>
+                                                <td><a href="/Admin/AdminBlog/UpdateBlog/@item.BlogID" class="btn btn-outline-success">Update</a></td>
+                                                <td><a href="/Admin/AdminBlog/RemoveBlog/@item.BlogID" class="btn btn-outline-dark">Go to Blog</a></td>
+                                                <td><a href="/Admin/AdminBlog/RemoveBlog/@item.BlogID" class="btn btn-outline-dark">Comments</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
