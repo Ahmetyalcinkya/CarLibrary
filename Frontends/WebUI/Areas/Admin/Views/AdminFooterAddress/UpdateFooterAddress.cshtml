@@ -1,0 +1,45 @@
+﻿@model UpdateFooterAddressDto
+
+@{
+    ViewData["Title"] = "UpdateFooterAddress";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Update Footer Address</h4>
+                        <p class="card-subtitle mb-4">Enter the footer address information that you want to update in the panel below. After data entry, you can complete your process by clicking the save button.</p>
+
+                        <form method="post">
+                            <input type="hidden" asp-for="FooterAddressID"/>
+                            <div class="form-group">
+                                <label for="exampleInputAddress">Address</label>
+                                <input type="text" class="form-control" id="exampleInputAddress" asp-for="Address" placeholder="Address...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFooterAddressDescription">Description</label>
+                                <input type="text" class="form-control" id="exampleInputFooterAddressDescription" asp-for="Description" placeholder="Description...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFooterAddressPhone">Phone Number</label>
+                                <input type="tel" class="form-control" id="exampleInputFooterAddressPhone" asp-for="Phone" placeholder="Phone number...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFooterAddressEmail">Email Address</label>
+                                <input type="email" class="form-control" id="exampleInputFooterAddressEmail" asp-for="Email" placeholder="Email address...">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Update Footer Address</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
