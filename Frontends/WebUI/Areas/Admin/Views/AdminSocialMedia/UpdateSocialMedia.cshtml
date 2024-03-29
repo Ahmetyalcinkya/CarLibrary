@@ -1,0 +1,40 @@
+﻿@model UpdateSocialMediaDto
+
+@{
+    ViewData["Title"] = "UpdateSocialMedia";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Update Social Media Information</h4>
+                        <p class="card-subtitle mb-4">Enter the Social Media information that you want to update in the box below. It would be best if you filled in all the blanks.</p>
+
+                        <form method="post">
+                        <input type="hidden" asp-for="SocialMediaID" />
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaName">Social Media Name</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaName" asp-for="Name" placeholder="Social Media name...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaUrl">Social Media Url</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaUrl" asp-for="Url" placeholder="Social Media link...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaIcon">Social Media Icon</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaIcon" asp-for="Icon" placeholder="SocialMedia icon...">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Update Social Media Information</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
