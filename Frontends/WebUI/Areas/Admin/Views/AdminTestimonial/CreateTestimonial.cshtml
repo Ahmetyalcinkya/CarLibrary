@@ -1,0 +1,41 @@
+﻿@model CreateTestimonialDto
+
+@{
+    ViewData["Title"] = "CreateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Add New Testimonial</h4>
+                        <p class="card-subtitle mb-4">Enter the Testimonial information that you want to add in the box below. It would be best if you filled in all the blanks.</p>
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputTestimonialName">Testimonial Name & Surname</label>
+                                <input type="text" class="form-control" id="exampleInputTestimonialName" asp-for="Name" placeholder="Testimonial name & surname...">
+                                <div class="form-group">
+                                    <label for="exampleInputTestimonialTitle">Testimonial Title</label>
+                                    <input type="text" class="form-control" id="exampleInputTestimonialTitle" asp-for="Title" placeholder="Testimonial title...">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTestimonialUrl">Testimonial Image-Url</label>
+                                <input type="text" class="form-control" id="exampleInputTestimonialUrl" asp-for="ImageUrl" placeholder="Upload Testimonial image.">
+                            </div> <div class="form-group">
+                                <label for="exampleInputTestimonialComment">Testimonial Comment</label>
+                                <textarea rows="5" class="form-control" id="exampleInputTestimonialComment" asp-for="Comment" placeholder="Testimonial comment..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save Testimonial Information</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
