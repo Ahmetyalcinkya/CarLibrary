@@ -1,0 +1,39 @@
+﻿@model UpdateServiceDto
+
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Update Service</h4>
+                        <p class="card-subtitle mb-4">Enter the Service information that you want to update in the box below. It would be best if you filled in all the blanks.</p>
+
+                        <form method="post">
+                            <input type="hidden" asp-for="ServiceID"/>
+                            <div class="form-group">
+                                <label for="exampleInputServiceTitle">Service Title</label>
+                                <input type="text" class="form-control" id="exampleInputServiceTitle" asp-for="Title" placeholder="Service title...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputServiceDescription">Service Description</label>
+                                <input type="text" class="form-control" id="exampleInputServiceDescription" asp-for="Description" placeholder="Service description...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputServiceIconUrl">Service Icon-Url</label>
+                                <input type="text" class="form-control" id="exampleInputServiceIconUrl" asp-for="IconUrl" placeholder="Service icon-url address...">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Update Service Information</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

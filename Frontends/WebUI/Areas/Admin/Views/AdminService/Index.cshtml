@@ -1,0 +1,62 @@
+﻿@model List<ResultServiceDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Service Information Page</h4>
+                        <p class="card-subtitle mb-4">
+                            This is the page where you can see and do all the service operations. You have to add a maximum of 4 service types. Otherwise, the theme doesn't work properly.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Icon-Url</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                    </tr>
+                                </thead>
+                                @if (Model.Count == 0)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td><h4>There is nothing to show here yet!</h4></td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.IconUrl</td>
+                                            <td><a href="/Admin/AdminService/RemoveService/@item.ServiceID" class="btn btn-outline-danger">Delete</a></td>
+                                            <td><a href="/Admin/AdminService/UpdateService/@item.ServiceID" class="btn btn-outline-success">Update</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="/Admin/AdminService/CreateService/" class="btn btn-outline-primary">Add new Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
