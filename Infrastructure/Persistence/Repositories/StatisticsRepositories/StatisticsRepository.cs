@@ -62,17 +62,20 @@ namespace Persistence.Repositories.StatisticsRepositories
 
         public int GetCarCountByE_Car()
         {
-            throw new NotImplementedException();
+            var value = _context.Cars.Where(car => car.Fuel == "Electric").Count();
+            return value;
         }
 
         public int GetCarCountByFuelGasolineOrDiesel()
         {
-            throw new NotImplementedException();
+            var value = _context.Cars.Where(car => car.Fuel == "Gasoline" || car.Fuel == "Diesel").Count();
+            return value;
         }
 
         public int GetCarCountByMilesAgeLessThenOneThousand()
         {
-            throw new NotImplementedException();
+            var value = _context.Cars.Where(car => car.MileAge < 1000).Count();
+            return value;
         }
 
         public decimal GetCarsAverageDailyPrice()
