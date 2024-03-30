@@ -28,5 +28,10 @@ namespace Persistence.Repositories.CarRepositories
             var values = _context.Cars.Include(_c => _c.Brand).OrderByDescending(_c => _c.CarID).Take(5).ToList();
             return values;
         }
+        public int GetCarCount()
+        {
+            var value = _context.Cars.Count();
+            return value;
+        }
     }
 }
