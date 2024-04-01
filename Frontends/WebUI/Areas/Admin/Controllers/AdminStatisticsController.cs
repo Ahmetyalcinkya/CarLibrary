@@ -155,6 +155,33 @@ namespace WebUI.Areas.Admin.Controllers
                 ViewBag.carCountByMilesAgeLessThenOneThousandNumber = randomNum;
             }
             #endregion
+
+            #region GetCarCountByFuelGasolineOrDiesel
+            var responseMessage14 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarCountByFuelGasolineOrDiesel");
+            if (responseMessage14.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage14.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.carCountByFuelGasolineOrDiesel = values.CarCountByFuelGasolineOrDiesel;
+                ViewBag.carCountByFuelGasolineOrDieselNumber = randomNum;
+            }
+            #endregion
+
+            #region GetCarCountByE_Car
+            var responseMessage15 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarCountByE_Car");
+            if (responseMessage15.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage15.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.carCountByE_Car = values.CarCountByE_Car;
+                ViewBag.carCountByE_CarNumber = randomNum;
+            }
+            #endregion
+
+
+
             return View();
         }
     }

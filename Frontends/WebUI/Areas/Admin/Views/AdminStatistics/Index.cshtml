@@ -320,22 +320,22 @@
                 <div class="card bg-primary border-primary">
                     <div class="card-body">
                         <div class="mb-4">
-                            <span class="badge badge-soft-light float-right">Daily</span>
-                            <h5 class="card-title mb-0 text-white">Cost per Unit</h5>
+                            <span class="badge badge-soft-light float-right">Car Count</span>
+                            <h5 class="card-title mb-0 text-white">Fuel Gasoline or Diesel</h5>
                         </div>
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
                                 <h2 class="d-flex align-items-center mb-0 text-white">
-                                    $17.21
+                                    # @ViewBag.carCountByFuelGasolineOrDiesel
                                 </h2>
                             </div>
                             <div class="col-4 text-right">
-                                <span class="text-white-50">12.5% <i class="mdi mdi-arrow-up"></i></span>
+                                <span class="text-white-50">@ViewBag.carCountByFuelGasolineOrDieselNumber% <i class="mdi mdi-arrow-up"></i></span>
                             </div>
                         </div>
 
                         <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
-                            <div class="progress-bar bg-light" role="progressbar" style="width: 38%;"></div>
+                            <div class="progress-bar bg-light" role="progressbar" style="width: @ViewBag.carCountByFuelGasolineOrDieselNumber%;"></div>
                         </div>
                     </div>
                 </div>
@@ -345,22 +345,22 @@
                 <div class="card bg-success border-success">
                     <div class="card-body">
                         <div class="mb-4">
-                            <span class="badge badge-soft-light float-right">Per Week</span>
-                            <h5 class="card-title mb-0 text-white">Market Revenue</h5>
+                            <span class="badge badge-soft-light float-right">Car Count</span>
+                            <h5 class="card-title mb-0 text-white">e-Cars</h5>
                         </div>
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
                                 <h2 class="d-flex align-items-center text-white mb-0">
-                                    $1875.54
+                                    # @ViewBag.carCountByE_Car
                                 </h2>
                             </div>
                             <div class="col-4 text-right">
-                                <span class="text-white-50">18.71% <i class="mdi mdi-arrow-down"></i></span>
+                                <span class="text-white-50">@ViewBag.carCountByE_CarNumber% <i class="mdi mdi-arrow-down"></i></span>
                             </div>
                         </div>
 
                         <div class="progress badge-soft-light shadow-sm" style="height: 7px;">
-                            <div class="progress-bar bg-light" role="progressbar" style="width: 38%;"></div>
+                            <div class="progress-bar bg-light" role="progressbar" style="width: @ViewBag.carCountByE_CarNumber%;"></div>
                         </div>
                     </div>
                 </div>
@@ -370,14 +370,14 @@
                 <div class="card bg-warning border-warning">
                     <div class="card-body">
                         <div class="mb-4">
-                            <span class="badge badge-soft-light float-right">Per Month</span>
-                            <h5 class="card-title mb-0 text-white">Expenses</h5>
+                            <span class="badge badge-soft-light float-right">Daily Price</span>
+                            <h5 class="card-title mb-0 text-white">Most Expensive Car</h5>
                         </div>
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
-                                <h2 class="d-flex align-items-center text-white mb-0">
-                                    $784.62
-                                </h2>
+                                <h3 class="d-flex align-items-center text-white mb-0">
+                                    $ Daily price will be here!
+                                </h3>
                             </div>
                             <div class="col-4 text-right">
                                 <span class="text-white-50">57% <i class="mdi mdi-arrow-up"></i></span>
@@ -395,14 +395,14 @@
                 <div class="card bg-info border-info">
                     <div class="card-body">
                         <div class="mb-4">
-                            <span class="badge badge-soft-light float-right">All Time</span>
-                            <h5 class="card-title mb-0 text-white">Daily Visits</h5>
+                            <span class="badge badge-soft-light float-right">Daily Price</span>
+                            <h5 class="card-title mb-0 text-white">Cheapest Car</h5>
                         </div>
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
-                                <h2 class="d-flex align-items-center text-white mb-0">
-                                    1,15,187
-                                </h2>
+                                <h3 class="d-flex align-items-center text-white mb-0">
+                                    $ Daily price will be here!
+                                </h3>
                             </div>
                             <div class="col-4 text-right">
                                 <span class="text-white-50">17.8% <i class="mdi mdi-arrow-down"></i></span>
