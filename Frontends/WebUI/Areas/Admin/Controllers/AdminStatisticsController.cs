@@ -68,6 +68,65 @@ namespace WebUI.Areas.Admin.Controllers
             }
             #endregion
 
+            #region GetBrandCount
+            var responseMessage5 = await client.GetAsync("https://localhost:7199/api/Statistics/GetBrandCount");
+            if (responseMessage5.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage5.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.brandCount = values.BrandCount;
+                ViewBag.brandCountNumber = randomNum;
+            }
+            #endregion
+
+            #region GetCarsAverageHourlyPrice
+            var responseMessage6 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarsAverageHourlyPrice");
+            if (responseMessage6.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage6.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.averageHourlyPrice = values.AverageHourlyPrice.ToString("0.##");
+                ViewBag.averageHourlyPriceNumber = randomNum;
+            }
+            #endregion
+
+            #region GetCarsAverageDailyPrice
+            var responseMessage7 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarsAverageDailyPrice");
+            if (responseMessage7.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage7.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.averageDailyPrice = values.AverageDailyPrice.ToString("0.##");
+                ViewBag.averageDailyPriceNumber = randomNum;
+            }
+            #endregion
+
+            #region GetCarsAverageWeeklyPrice
+            var responseMessage8 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarsAverageWeeklyPrice");
+            if (responseMessage8.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage8.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.averageWeeklyPrice = values.AverageWeeklyPrice.ToString("0.##");
+                ViewBag.averageWeeklyPriceNumber = randomNum;
+            }
+            #endregion
+
+            #region GetCarsAverageMonthlyPrice
+            var responseMessage9 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarsAverageMonthlyPrice");
+            if (responseMessage9.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage9.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.averageMonthlyPrice = values.AverageMonthlyPrice.ToString("0.##");
+                ViewBag.averageMonthlyPriceNumber = randomNum;
+            }
+            #endregion
             return View();
         }
     }

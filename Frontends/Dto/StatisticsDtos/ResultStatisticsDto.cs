@@ -12,5 +12,10 @@ namespace Dto.StatisticsDtos
         public int LocationCount { get; set; }
         public int AuthorCount { get; set; }
         public int BlogCount { get; set; }
+        public int BrandCount { get; set; }
+        public decimal AverageHourlyPrice { get; set; }
+        public decimal AverageDailyPrice { get; set; }
+        public decimal AverageWeeklyPrice { get; set; }
+        public decimal AverageMonthlyPrice { get; set; }
     }
 }
