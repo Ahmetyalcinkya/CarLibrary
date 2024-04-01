@@ -127,6 +127,34 @@ namespace WebUI.Areas.Admin.Controllers
                 ViewBag.averageMonthlyPriceNumber = randomNum;
             }
             #endregion
+
+            #region GetAutoTransmissionCarsCount
+            var responseMessage10 = await client.GetAsync("https://localhost:7199/api/Statistics/GetAutoTransmissionCarsCount");
+            if (responseMessage10.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage10.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.autoTransmissionCarsCount = values.AutoTransmissionCarsCount;
+                ViewBag.autoTransmissionCarsCountNumber = randomNum;
+            }
+            #endregion
+
+            //GetMostPopularBrandName
+
+            //GetBlogTitleWithMostComments
+
+            #region GetCarCountByMilesAgeLessThenOneThousand
+            var responseMessage13 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarCountByMilesAgeLessThenOneThousand");
+            if (responseMessage13.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage13.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.carCountByMilesAgeLessThenOneThousand = values.CarCountByMilesAgeLessThenOneThousand;
+                ViewBag.carCountByMilesAgeLessThenOneThousandNumber = randomNum;
+            }
+            #endregion
             return View();
         }
     }

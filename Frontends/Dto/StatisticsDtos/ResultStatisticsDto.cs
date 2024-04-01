@@ -17,5 +17,7 @@ namespace Dto.StatisticsDtos
         public decimal AverageDailyPrice { get; set; }
         public decimal AverageWeeklyPrice { get; set; }
         public decimal AverageMonthlyPrice { get; set; }
+        public int AutoTransmissionCarsCount { get; set; }
+        public int CarCountByMilesAgeLessThenOneThousand { get; set; }
     }
 }
