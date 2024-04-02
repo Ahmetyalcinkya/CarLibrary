@@ -376,16 +376,16 @@
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
                                 <h3 class="d-flex align-items-center text-white mb-0">
-                                    $ Daily price will be here!
+                                    @ViewBag.carBrandAndModelByRentPriceDailyMax
                                 </h3>
                             </div>
                             <div class="col-4 text-right">
-                                <span class="text-white-50">57% <i class="mdi mdi-arrow-up"></i></span>
+                                <span class="text-white-50">@ViewBag.carBrandAndModelByRentPriceDailyMaxNumber% <i class="mdi mdi-arrow-up"></i></span>
                             </div>
                         </div>
 
                         <div class="progress badge-soft-light shadow-sm" style="height: 7px;">
-                            <div class="progress-bar bg-light" role="progressbar" style="width: 68%;"></div>
+                            <div class="progress-bar bg-light" role="progressbar" style="width: @ViewBag.carBrandAndModelByRentPriceDailyMaxNumber%;"></div>
                         </div>
                     </div>
                 </div>
@@ -401,16 +401,16 @@
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
                                 <h3 class="d-flex align-items-center text-white mb-0">
-                                    $ Daily price will be here!
+                                    @ViewBag.carBrandAndModelByRentPriceDailyMin
                                 </h3>
                             </div>
                             <div class="col-4 text-right">
-                                <span class="text-white-50">17.8% <i class="mdi mdi-arrow-down"></i></span>
+                                <span class="text-white-50">@ViewBag.carBrandAndModelByRentPriceDailyMinNumber% <i class="mdi mdi-arrow-down"></i></span>
                             </div>
                         </div>
 
                         <div class="progress badge-soft-light shadow-sm" style="height: 7px;">
-                            <div class="progress-bar bg-light" role="progressbar" style="width: 57%;"></div>
+                            <div class="progress-bar bg-light" role="progressbar" style="width: @ViewBag.carBrandAndModelByRentPriceDailyMinNumber%;"></div>
                         </div>
                     </div>
                 </div>

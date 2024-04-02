@@ -180,6 +180,30 @@ namespace WebUI.Areas.Admin.Controllers
             }
             #endregion
 
+            #region GetCarBrandAndModelByRentPriceDailyMax
+            var responseMessage16 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarBrandAndModelByRentPriceDailyMax");
+            if (responseMessage16.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage16.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.carBrandAndModelByRentPriceDailyMax = values.CarBrandAndModelByRentPriceDailyMax;
+                ViewBag.carBrandAndModelByRentPriceDailyMaxNumber = randomNum;
+            }
+            #endregion 
+
+            #region GetCarBrandAndModelByRentPriceDailyMin
+            var responseMessage17 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarBrandAndModelByRentPriceDailyMin");
+            if (responseMessage17.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage17.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.carBrandAndModelByRentPriceDailyMin = values.CarBrandAndModelByRentPriceDailyMin;
+                ViewBag.carBrandAndModelByRentPriceDailyMinNumber = randomNum;
+            }
+            #endregion
+
 
 
             return View();

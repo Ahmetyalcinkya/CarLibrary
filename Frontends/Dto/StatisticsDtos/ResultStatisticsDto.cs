@@ -21,5 +21,7 @@ namespace Dto.StatisticsDtos
         public int CarCountByMilesAgeLessThenOneThousand { get; set; }
         public int CarCountByFuelGasolineOrDiesel { get; set; }
         public int CarCountByE_Car { get; set; }
+        public string CarBrandAndModelByRentPriceDailyMax { get; set; }
+        public string CarBrandAndModelByRentPriceDailyMin { get; set; }
     }
 }
