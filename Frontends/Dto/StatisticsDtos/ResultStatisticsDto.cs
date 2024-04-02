@@ -18,6 +18,7 @@ namespace Dto.StatisticsDtos
         public decimal AverageWeeklyPrice { get; set; }
         public decimal AverageMonthlyPrice { get; set; }
         public int AutoTransmissionCarsCount { get; set; }
+        public string MostPopularBrandName { get; set; }
         public int CarCountByMilesAgeLessThenOneThousand { get; set; }
         public int CarCountByFuelGasolineOrDiesel { get; set; }
         public int CarCountByE_Car { get; set; }

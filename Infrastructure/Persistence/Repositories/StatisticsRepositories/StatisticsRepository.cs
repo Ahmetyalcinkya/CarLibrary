@@ -5,7 +5,9 @@ using Persistence.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Persistence.Repositories.StatisticsRepositories
@@ -131,7 +133,14 @@ namespace Persistence.Repositories.StatisticsRepositories
 
         public string GetMostPopularBrandName()
         {
-            throw new NotImplementedException();
+            //SELECT b."Name",COUNT(*) AS totalCar FROM public."Cars" AS car INNER JOIN public."Brands" AS b ON car."BrandID" = b."BrandID" GROUP BY b."BrandID" ORDER BY totalCar DESC LIMIT 1;
+            var value = _context.Cars.GroupBy(car => car.BrandID).Select(value => 
+                                                                        new {
+                                                                            BrandID = value.Key,
+                                                                            Count = value.Count()
+                                                                        }).OrderByDescending(car => car.Count).Take(1).FirstOrDefault();
+            string brandName = _context.Brands.Where(car => car.BrandID == value.BrandID).Select(brand => brand.Name).FirstOrDefault();
+            return brandName;
         }
     }
 }

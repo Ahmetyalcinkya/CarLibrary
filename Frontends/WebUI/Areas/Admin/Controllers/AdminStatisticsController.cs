@@ -140,7 +140,17 @@ namespace WebUI.Areas.Admin.Controllers
             }
             #endregion
 
-            //GetMostPopularBrandName
+            #region GetMostPopularBrandName
+            var responseMessage11 = await client.GetAsync("https://localhost:7199/api/Statistics/GetMostPopularBrandName");
+            if (responseMessage11.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage11.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.mostPopularBrandName = values.MostPopularBrandName;
+                ViewBag.mostPopularBrandNameNumber = randomNum;
+            }
+            #endregion
 
             //GetBlogTitleWithMostComments
 
