@@ -152,7 +152,17 @@ namespace WebUI.Areas.Admin.Controllers
             }
             #endregion
 
-            //GetBlogTitleWithMostComments
+            #region GetBlogTitleWithMostComments
+            var responseMessage12 = await client.GetAsync("https://localhost:7199/api/Statistics/GetBlogTitleWithMostComments");
+            if (responseMessage12.IsSuccessStatusCode)
+            {
+                int randomNum = random.Next(0, 101);
+                var jsonData = await responseMessage12.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.blogTitleWithMostComments = values.BlogTitleWithMostComments;
+                ViewBag.blogTitleWithMostCommentsNumber = randomNum;
+            }
+            #endregion
 
             #region GetCarCountByMilesAgeLessThenOneThousand
             var responseMessage13 = await client.GetAsync("https://localhost:7199/api/Statistics/GetCarCountByMilesAgeLessThenOneThousand");
@@ -213,8 +223,6 @@ namespace WebUI.Areas.Admin.Controllers
                 ViewBag.carBrandAndModelByRentPriceDailyMinNumber = randomNum;
             }
             #endregion
-
-
 
             return View();
         }

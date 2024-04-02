@@ -40,7 +40,15 @@ namespace Persistence.Repositories.StatisticsRepositories
 
         public string GetBlogTitleWithMostComments()
         {
-            throw new NotImplementedException();
+            //SELECT b."Title",COUNT(*) AS totalComment FROM public."Comments" AS com INNER JOIN public."Blogs" AS b ON com."BlogID" = b."BlogID" GROUP BY b."BlogID" ORDER BY totalComment DESC LIMIT 1;
+
+            var value = _context.Comments.GroupBy(comment => comment.BlogID).Select(value => 
+                                                                              new {
+                                                                                  BlogID = value.Key,
+                                                                                  Count = value.Count()
+                                                                              }).OrderByDescending(blog => blog.Count).Take(1).FirstOrDefault();
+            string blogTitle = _context.Blogs.Where(blog => blog.BlogID == value.BlogID).Select(blog => blog.Title).FirstOrDefault();
+            return blogTitle;
         }
 
         public int GetBrandCount()
