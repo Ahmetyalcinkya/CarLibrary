@@ -51,7 +51,7 @@ namespace Persistence.Repositories.StatisticsRepositories
         {
             //SELECT * FROM public."CarPricings" AS cp WHERE cp."Amount" = (SELECT MAX("Amount") FROM public."CarPricings" AS cp WHERE cp."PricingID" = 3);
             int pricingID = _context.Pricings.Where(pricing => pricing.Name == "Daily").Select(pricing => pricing.PricingID).FirstOrDefault();
-            decimal amount = _context.CarPricings.Where(carPricing => carPricing.CarPricingID == pricingID).Max(carPricing => carPricing.Amount);
+            decimal amount = _context.CarPricings.Where(carPricing => carPricing.PricingID == pricingID).Max(carPricing => carPricing.Amount);
             int carID = _context.CarPricings.Where(carPricing => carPricing.Amount == amount).Select(carPricing => carPricing.CarID).FirstOrDefault();
             string brandModel = _context.Cars.Where(car => car.CarID == carID).Include(brand => brand.Brand).Select(car => car.Brand.Name + " " + car.Model).FirstOrDefault();
             return brandModel;
@@ -60,7 +60,12 @@ namespace Persistence.Repositories.StatisticsRepositories
 
         public string GetCarBrandAndModelByRentPriceDailyMin()
         {
-            throw new NotImplementedException();
+            //SELECT * FROM public."CarPricings" AS cp WHERE cp."Amount" = (SELECT MIN("Amount") FROM public."CarPricings" AS cp WHERE cp."PricingID" = 3);
+            int pricingID = _context.Pricings.Where(pricing => pricing.Name == "Daily").Select(pricing => pricing.PricingID).FirstOrDefault();
+            decimal amount = _context.CarPricings.Where(carPricing => carPricing.PricingID == pricingID).Min(carPricing => carPricing.Amount);
+            int carID = _context.CarPricings.Where(carPricing => carPricing.Amount == amount).Select(carPricing => carPricing.CarID).FirstOrDefault();
+            string brandModel = _context.Cars.Where(car => car.CarID == carID).Include(brand => brand.Brand).Select(car => car.Brand.Name + " " + car.Model).FirstOrDefault();
+            return brandModel;
         }
         public int GetCarCount()
         {
