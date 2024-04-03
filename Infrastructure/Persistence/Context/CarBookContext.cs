@@ -35,6 +35,7 @@ namespace Persistence.Context
         public DbSet<Blog> Blogs{ get; set; }
         public DbSet<TagCloud> TagClouds { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<RentACar> RentACars { get; set; }
         private string GetPostgreSQLConnectionString()
         {
             return "Host=localhost;Port=5432;Username=postgres;Password=Ahmetcr7.;Database=postgres;";
