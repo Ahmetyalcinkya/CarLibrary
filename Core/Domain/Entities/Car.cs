@@ -23,6 +23,7 @@ namespace Domain.Entities
         public List<CarDescription> CarDescriptions { get; set; }
         public List<CarPricing> CarPricings { get; set; }
         public List<RentACar> RentACars { get; set; }
+        public List<RentACarProcess> Processes { get; set; }
 
     }
 }

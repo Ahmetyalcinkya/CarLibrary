@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Persistence.Context;
@@ -11,9 +12,11 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    partial class CarBookContextModelSnapshot : ModelSnapshot
+    [Migration("20240403123733_mig_add_RentACarProcessTable")]
+    partial class mig_add_RentACarProcessTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -496,8 +499,8 @@ namespace Persistence.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("DropOffDate")
-                        .HasColumnType("Date");
+                    b.Property<DateOnly>("DropOffDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("DropOffDescription")
                         .IsRequired()
@@ -506,11 +509,11 @@ namespace Persistence.Migrations
                     b.Property<int>("DropOffLocation")
                         .HasColumnType("integer");
 
-                    b.Property<TimeSpan>("DropOffTime")
-                        .HasColumnType("interval");
+                    b.Property<TimeOnly>("DropOffTime")
+                        .HasColumnType("time without time zone");
 
-                    b.Property<DateTime>("PickUpDate")
-                        .HasColumnType("Date");
+                    b.Property<DateOnly>("PickUpDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("PickUpDescription")
                         .IsRequired()
@@ -519,8 +522,8 @@ namespace Persistence.Migrations
                     b.Property<int>("PickUpLocation")
                         .HasColumnType("integer");
 
-                    b.Property<TimeSpan>("PickUpTime")
-                        .HasColumnType("interval");
+                    b.Property<TimeOnly>("PickUpTime")
+                        .HasColumnType("time without time zone");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("numeric");
