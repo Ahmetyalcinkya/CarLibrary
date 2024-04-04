@@ -14,9 +14,14 @@ namespace Web.Api.Controllers
 		{
 			_mediator = mediator;
 		}
-		[HttpPost]
-		public async Task<IActionResult> GetRentACarListByLocation(GetRentACarQuery query)
+		[HttpGet]
+		public async Task<IActionResult> GetRentACarListByLocation(int locationID, bool isAvailable)
 		{
+			GetRentACarQuery query = new GetRentACarQuery 
+			{
+				LocationID = locationID,
+				isAvailable = isAvailable
+			};
 			var values = await _mediator.Send(query);
 			return Ok(values);
 		}
