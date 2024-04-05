@@ -16,19 +16,11 @@ namespace WebUI.Controllers
 
 		public async Task<IActionResult> Index(FilterRentACarDto dto)
 		{
-			var pickDate = TempData["bookpickdate"];
-			var offDate = TempData["bookoffdate"];
-			var pickTime = TempData["timepick"];
-			var offTime = TempData["timeoff"];
 			var locationID = TempData["locationID"];
 
 			dto.LocationID = int.Parse(locationID.ToString());
 			dto.isAvailable = true;
 
-			ViewBag.pickDate = pickDate;
-			ViewBag.offDate = offDate;
-			ViewBag.pickTime = pickTime;
-			ViewBag.offTime = offTime;
 			ViewBag.locationID = locationID;
 
 			var client = _httpClientFactory.CreateClient();
