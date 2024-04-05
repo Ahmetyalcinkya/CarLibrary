@@ -36,6 +36,24 @@ namespace Persistence.Context
         public DbSet<TagCloud> TagClouds { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<RentACar> RentACars { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Burada iki tablo arasındaki bağı 2 farklı veriye göre yaptık. Tablolar arasında 2 ilişki var. ForeignKey olarak bir DropOffLocation ve PickUpLocation kolonları tablolara bağlandı.
+            modelBuilder.Entity<Reservation>()
+                .HasOne(reservation => reservation.PickUpLocation)
+                .WithMany(location => location.PickUpReservations)
+                .HasForeignKey(reservation => reservation.PickUpLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(reservation => reservation.DropOffLocation)
+                .WithMany(location => location.DropOffReservations)
+                .HasForeignKey(reservation => reservation.DropOffLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        }
+
         private string GetPostgreSQLConnectionString()
         {
             return "Host=localhost;Port=5432;Username=postgres;Password=Ahmetcr7.;Database=postgres;";
