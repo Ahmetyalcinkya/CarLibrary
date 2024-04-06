@@ -32,6 +32,7 @@ namespace Application.Features.Mediator.Handlers.ReservationHandlers
                 Name = request.Name,
                 Surname = request.Surname,
                 Phone = request.Phone,
+                Status = "Reservation Received",
             });
         }
     }
