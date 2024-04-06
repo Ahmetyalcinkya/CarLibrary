@@ -15,10 +15,11 @@ namespace WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
             ViewBag.v1 = "Rent the Car";
             ViewBag.v2 = "Reservation form for the Car Rental";
+            ViewBag.v3 = id;
 
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7199/api/Locations");
