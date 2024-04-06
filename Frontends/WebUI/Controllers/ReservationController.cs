@@ -1,7 +1,9 @@
 ﻿using Dto.LocationDtos;
+using Dto.ReservationDtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace WebUI.Controllers
 {
@@ -12,7 +14,7 @@ namespace WebUI.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             ViewBag.v1 = "Rent the Car";
@@ -30,6 +32,20 @@ namespace WebUI.Controllers
                                                  Value = x.LocationID.ToString(),
                                              }).ToList();
             ViewBag.ddvalues = ddvalues;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(CreateReservationDto createReservation)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createReservation);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7199/api/Reservations", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                // Kullanıcıya email gönderildiğine dair bir mesaj ekranı eklenebilir!!! İlerleyen dönemde kontrol et!
+                return RedirectToAction("Index", "Default");
+            }
             return View();
         }
     }
