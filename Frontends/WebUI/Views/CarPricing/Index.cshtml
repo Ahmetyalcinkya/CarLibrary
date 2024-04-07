@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ResultCarPricingListWithModelDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
@@ -19,14 +19,15 @@
 								<th class="bg-black heading">Per Month Pricing</th>
 							</tr>
 						</thead>
+						@foreach(var item in Model){
 						<tbody>
 
 							<tr class="">
 								<td class="car-image"><div class="img" style="background-image:url(/carbook-master/images/car-1.jpg);"></div></td>
 								<td class="product-name">
-									<h3>Cheverolet SUV Car</h3>
+									<h3>@item.Model</h3>
 									<p class="mb-0 rated">
-										<span>rated:</span>
+										<span>Point:</span>
 										<span class="ion-ios-star"></span>
 										<span class="ion-ios-star"></span>
 										<span class="ion-ios-star"></span>
@@ -39,10 +40,9 @@
 									<p class="btn-custom"><a href="#">Rent a car</a></p>
 									<div class="price-rate">
 										<h3>
-											<span class="num"><small class="currency">$</small> 10.99</span>
-											<span class="per">/per hour</span>
+											<span class="num"><small class="currency">₺</small> @item.DailyAmount</span>
+											<span class="per">/Per Day</span>
 										</h3>
-										<span class="subheading">$3/hour fuel surcharges</span>
 									</div>
 								</td>
 
@@ -50,10 +50,9 @@
 									<p class="btn-custom"><a href="#">Rent a car</a></p>
 									<div class="price-rate">
 										<h3>
-											<span class="num"><small class="currency">$</small> 60.99</span>
-											<span class="per">/per day</span>
+											<span class="num"><small class="currency">₺</small> @item.WeeklyAmount</span>
+											<span class="per">/Per Week</span>
 										</h3>
-										<span class="subheading">$3/hour fuel surcharges</span>
 									</div>
 								</td>
 
@@ -61,15 +60,15 @@
 									<p class="btn-custom"><a href="#">Rent a car</a></p>
 									<div class="price-rate">
 										<h3>
-											<span class="num"><small class="currency">$</small> 995.99</span>
-											<span class="per">/per month</span>
+											<span class="num"><small class="currency">₺</small> @item.MonthlyAmount</span>
+											<span class="per">/Per Month</span>
 										</h3>
-										<span class="subheading">$3/hour fuel surcharges</span>
 									</div>
 								</td>
 							</tr>
 
 						</tbody>
+						}
 					</table>
 				</div>
 			</div>
