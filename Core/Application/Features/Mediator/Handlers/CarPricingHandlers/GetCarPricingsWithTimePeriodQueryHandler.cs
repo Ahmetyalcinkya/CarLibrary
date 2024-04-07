@@ -23,10 +23,11 @@ namespace Application.Features.Mediator.Handlers.CarPricingHandlers
 			var values = _repository.GetCarPricingsWithTimePeriod();
 			return values.Select(value => new GetCarPricingsWithTimePeriodQueryResult
 			{
+				Model = value.Model,
+				ListCoverImageUrl = value.ListCoverImageUrl,
 				DailyAmount = value.Amounts[0],
 				WeeklyAmount = value.Amounts[1],
 				MonthlyAmount = value.Amounts[2],
-				Model = value.Model,
 			}).ToList();
 		}
 	}
