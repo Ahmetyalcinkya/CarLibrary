@@ -20,5 +20,11 @@ namespace Web.Api.Controllers
 			var values = await _mediator.Send(new GetCarPricingWithCarsQuery());
 			return Ok(values);
 		}
+		[HttpGet("GetCarPricingsWithTimePeriods")]
+		public async Task<IActionResult> GetCarPricingsWithTimePeriods()
+		{
+			var values = await _mediator.Send(new GetCarPricingsWithTimePeriodQuery());
+			return Ok(values);
+		}
 	}
 }
