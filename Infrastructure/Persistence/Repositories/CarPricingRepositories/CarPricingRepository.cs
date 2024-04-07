@@ -40,6 +40,7 @@ namespace Persistence.Repositories.CarPricingRepositories
 						CarPricingViewModel carPricingViewModel = new CarPricingViewModel();
 						Enumerable.Range(1, 3).ToList().ForEach(pricing =>
 						{
+							carPricingViewModel.Model = reader[0].ToString();
 							if (DBNull.Value.Equals(reader[pricing]))
 							{
 								carPricingViewModel.Amounts.Add(0);
