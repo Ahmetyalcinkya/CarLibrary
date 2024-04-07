@@ -4,6 +4,12 @@
     Layout = null;
 }
 
+<style>
+	#drop option {
+		color: black;
+	}
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 @await Component.InvokeAsync("_HeadUILayoutComponentPartial")
@@ -23,7 +29,7 @@
 								<h2>Rent your car now!</h2>
 								<div class="form-group">
 									<label for="" class="label">Pick-up location</label>
-									@Html.DropDownListFor(element => element.LocationID, (List<SelectListItem>)ViewBag.ddvalues,new{@class= "form-control", @name= "locationID"})
+									@Html.DropDownListFor(element => element.LocationID, (List<SelectListItem>)ViewBag.ddvalues,new{@class= "form-control",@id="drop", @name= "locationID"})
 								</div>
 
 								<div class="d-flex">
@@ -78,7 +84,7 @@
 										</div>
 									</div>
 								</div>
-								<p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+								<p><a href="/CarPricing/Index/" class="btn btn-primary py-3 px-4">Check the car prices.</a></p>
 							</div>
 						</div>
 					</div>
