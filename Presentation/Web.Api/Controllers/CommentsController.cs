@@ -1,5 +1,7 @@
-﻿using Application.Features.RepositoryPattern;
+﻿using Application.Features.Mediator.Commands.CommentCommands;
+using Application.Features.RepositoryPattern;
 using Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +12,11 @@ namespace Web.Api.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly IGenericRepository<Comment> _commentRepository;
-        public CommentsController(IGenericRepository<Comment> commentRepository)
+        private readonly IMediator _mediator;
+        public CommentsController(IGenericRepository<Comment> commentRepository, IMediator mediator)
         {
             _commentRepository = commentRepository;
+            _mediator = mediator;
         }
         [HttpGet]
         public IActionResult GetComments() 
@@ -42,6 +46,12 @@ namespace Web.Api.Controllers
         public IActionResult CreateComment(Comment comment)
         {
             _commentRepository.Create(comment);
+            return Ok("Comment saved successfully!");
+        }
+        [HttpPost("CreateCommentWithMediator")]
+        public IActionResult CreateCommentWithMediator(CreateCommentCommand command)
+        {
+            _mediator.Send(command);
             return Ok("Comment saved successfully!");
         }
         [HttpPut]
