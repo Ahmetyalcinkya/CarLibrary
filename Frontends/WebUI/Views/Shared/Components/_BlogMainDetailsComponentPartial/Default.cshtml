@@ -4,16 +4,16 @@
     <h2 class="mb-3">@Model.Title</h2>
     <p>@Model.Description</p>
     
-    @await Component.InvokeAsync("_BlogDetailCloudTagByBlogComponentPartial", new { id = ViewBag.blogId });
+    @await Component.InvokeAsync("_BlogDetailCloudTagByBlogComponentPartial", new { id = ViewBag.blogId })
 
-    @await Component.InvokeAsync("_BlogDetailAuthorAboutComponentPartial", new { id = ViewBag.blogId });
+    @await Component.InvokeAsync("_BlogDetailAuthorAboutComponentPartial", new { id = ViewBag.blogId })
 
     <div class="pt-5 mt-5">
         <h3 class="mb-5">6 Comments</h3>
 
-        @await Component.InvokeAsync("_CommentListByBlogComponentPartial");
+        @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new { id = ViewBag.blogId })
 
-        @await Component.InvokeAsync("_AddCommentComponentPartial");
+        @await Component.InvokeAsync("_AddCommentComponentPartial")
         
     </div>
 </div>
