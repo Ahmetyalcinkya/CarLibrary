@@ -26,6 +26,7 @@ namespace Application.Features.Mediator.Handlers.CommentHandlers
                 CreatedDate = DateTime.UtcNow,
                 Description = request.Description,
                 Name = request.Name,
+                Email = request.Email,
             });
         }
     }
