@@ -14,5 +14,6 @@ namespace Application.Features.RepositoryPattern
         void Remove(T entity);
         T GetById(int id);
         List<T> GetCommentByBlogId(int id);
+        int CommentCountByBlog(int id);
     }
 }

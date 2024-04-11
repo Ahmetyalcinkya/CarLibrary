@@ -32,6 +32,12 @@ namespace Web.Api.Controllers
             var value = _commentRepository.GetCommentByBlogId(id);
             return Ok(value);
         }
+        [HttpGet("CommentCountByBlog")]
+        public IActionResult CommentCountByBlog(int id)
+        {
+            var value = _commentRepository.CommentCountByBlog(id);
+            return Ok(value);
+        }
         [HttpPost]
         public IActionResult CreateComment(Comment comment)
         {

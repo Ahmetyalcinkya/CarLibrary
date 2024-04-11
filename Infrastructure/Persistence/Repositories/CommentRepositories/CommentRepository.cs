@@ -50,5 +50,10 @@ namespace Persistence.Repositories.CommentRepositories
         {
            return _context.Set<Comment>().Where(_c => _c.BlogID == id).ToList();
         }
+
+        public int CommentCountByBlog(int id)
+        {
+            return _context.Comments.Where(comments => comments.BlogID == id).Count();
+        }
     }
 }
