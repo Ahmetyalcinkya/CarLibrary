@@ -6,6 +6,21 @@
             $('#btn1').click(function () {
             swal("Term and Conditions!", "You can access all service conditions regarding the car rental process from the agreement documents in our offices where the reservation can be made physically. The entire process includes details about damage, penalties, and transitions (hgs, ogs, etc.). We wish you pleasant journeys.");
             });
+            $('#btn2').click(function () {
+            swal("Security", "Our CarLibrary website has the infrastructure to keep data fully encrypted with the Sha256 encryption technique in AspNet Core technology. JWT verification is performed in our system. Our users' card information is never stored. User information such as ID numbers, e-mail addresses, and phone numbers is kept encrypted.");
+            });
+            $('#btn3').click(function () {
+            swal("Privacy &amp; Cookies Policy", "We use browser cookies to offer you a better experience.");
+            });
+            $('#btn4').click(function () {
+            swal("FAQ", "Questions about the system can be added here.");
+            });
+            $('#btn5').click(function () {
+            swal("Payment Options", "Payment transactions are made only by card at the rental points in our physical locations.");
+            });
+            $('#btn6').click(function () {
+            swal("How it works", "Step One : Pick a reservation date the car you want to rent. \n Step Two : Check your email account. \n Step Three : Visit the rental location and take your car!");
+            });
         });
     </script>
 
@@ -31,8 +46,8 @@
                         <li><a href="/About/Index/" class="py-2 d-block">About</a></li>
                         <li><a href="/Car/Index/" class="py-2 d-block">Services</a></li>
                             <li><a href="#" id="btn1" class="py-2 d-block">Term and Conditions</a></li>
-                        <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
-                        <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
+                            <li><a href="#" id="btn2" class="py-2 d-block">Security</a></li>
+                            <li><a href="#" id="btn3" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -40,10 +55,10 @@
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">Customer Support</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">FAQ</a></li>
-                        <li><a href="#" class="py-2 d-block">Payment Option</a></li>
+                        <li><a href="#" id="btn4" class="py-2 d-block">FAQ</a></li>
+                        <li><a href="#" id="btn5" class="py-2 d-block">Payment Options</a></li>
                             <li><a href="/CarPricing/Index/" class="py-2 d-block">Pricing</a></li>
-                        <li><a href="#" class="py-2 d-block">How it works</a></li>
+                            <li><a href="#" id="btn6" class="py-2 d-block">How it works</a></li>
                             <li><a href="/Contact/Index/" class="py-2 d-block">Contact Us</a></li>
                     </ul>
                 </div>
