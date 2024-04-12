@@ -1,6 +1,8 @@
 ﻿using Dto.BlogDtos;
+using Dto.CommentDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace WebUI.Controllers
 {
@@ -32,7 +34,32 @@ namespace WebUI.Controllers
             ViewBag.v1 = "Blogs";
             ViewBag.v2 = "Blog Details & Comments";
             ViewBag.blogId = id;
+
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync($"https://localhost:7199/api/Comments/CommentCountByBlog?id={id}");
+			var jsonData = await responseMessage.Content.ReadAsStringAsync();
+			ViewBag.commentCount = jsonData.ToString();
             return View();
+		}
+
+		[HttpGet]
+		public PartialViewResult AddComment(int id)
+		{
+			ViewBag.blogId = id;
+			return PartialView();
+		}
+		[HttpPost]
+		public async Task<IActionResult> AddComment(CreateCommentDto comment)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var jsonData = JsonConvert.SerializeObject(comment);
+			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+			var responseMessage = await client.PostAsync("https://localhost:7199/api/Comments/CreateCommentWithMediator", stringContent);
+			if(responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index", "Default");
+			}
+			return View();
 		}
 	}
 }
