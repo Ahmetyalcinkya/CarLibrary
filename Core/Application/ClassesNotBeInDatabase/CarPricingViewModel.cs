@@ -16,5 +16,6 @@ namespace Application.ClassesNotBeInDatabase
 		public string Model { get; set; }
         public List<Decimal> Amounts { get; set; }
         public string ListCoverImageUrl { get; set; }
+		// public int BrandID { get; set; }
     }
 }
