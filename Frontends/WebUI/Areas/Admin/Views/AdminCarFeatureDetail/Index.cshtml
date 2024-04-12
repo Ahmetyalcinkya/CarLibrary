@@ -4,7 +4,34 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
-@foreach(var item in Model){
-<p style="margin-left:50px">@item.FeatureName</p>
-}
 
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Car Features</h4>
+                        <p class="card-subtitle mb-4">
+                            You can customize the Car features below. Also, you can add new features or delete an existing feature of the cars.
+                        </p>
+                        <form method="post" class="d-flex flex-column col-2 g-y">
+                            @for(int i = 0; i < Model.Count; i++)
+                            {
+                                <div class="form-check" style="height: 30px">
+                                    <input type="hidden" asp-for="@Model[i].CarFeatureID" />
+                                    <input type="hidden" asp-for="@Model[i].FeatureName" />
+                                    <input type="checkbox" asp-for="@Model[i].isAvailable" class="form-check-input" />
+                                    <label class="form-check-label" for="@Model[i].isAvailable">@Model[i].FeatureName</label>
+                                </div>
+                            }
+                            <br />
+                            <button class="btn btn-success">Save Changes!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

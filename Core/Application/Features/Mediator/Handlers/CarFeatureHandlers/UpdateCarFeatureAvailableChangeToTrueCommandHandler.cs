@@ -19,7 +19,7 @@ namespace Application.Features.Mediator.Handlers.CarFeatureHandlers
 
         public async Task Handle(UpdateCarFeatureAvailableChangeToTrueCommand request, CancellationToken cancellationToken)
         {
-            _repository.ChangeCarFeatureAvailableStatusToTrue(request.Id);
+            _repository.ChangeCarFeatureAvailableToTrue(request.Id);
         }
     }
 }

@@ -20,18 +20,19 @@ namespace Web.Api.Controllers
         {
             var values = await _mediator.Send(new GetCarFeatureByCarIdQuery(id));
             return Ok(values);
-        } 
-        [HttpGet("CarFeatureChangeAvailableToTrue")]
-        public async Task<IActionResult> CarFeatureChangeAvailableToTrue(int id)
-        {
-            _mediator.Send(new UpdateCarFeatureAvailableChangeToTrueCommand(id));
-            return Ok("Update operation completed!");
         }
         [HttpGet("CarFeatureChangeAvailableToFalse")]
         public async Task<IActionResult> CarFeatureChangeAvailableToFalse(int id)
         {
             _mediator.Send(new UpdateCarFeatureAvailableChangeToFalseCommand(id));
-            return Ok("Update operation completed!");
+            return Ok("Update Operation Completed!");
+        }
+
+        [HttpGet("CarFeatureChangeAvailableToTrue")]
+        public async Task<IActionResult> CarFeatureChangeAvailableToTrue(int id)
+        {
+            _mediator.Send(new UpdateCarFeatureAvailableChangeToTrueCommand(id));
+            return Ok("Update Operation Completed!");
         }
     }
 }

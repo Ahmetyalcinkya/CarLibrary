@@ -18,24 +18,24 @@ namespace Persistence.Repositories.CarFeatureRepositories
             _context = context;
         }
 
-
         public List<CarFeature> GetCarFeatureByCarID(int id)
         {
             var values = _context.CarFeatures.Include(car => car.Features).Where(carFeature => carFeature.CarID == id).ToList();
             return values;
         }
-        public void ChangeCarFeatureAvailableStatusToFalse(int id)
+
+        public async void ChangeCarFeatureAvailableToTrue(int id)
         {
-            var value = _context.CarFeatures.Where(carFeature => carFeature.CarFeatureID == id).FirstOrDefault();
-            value.isAvailable = false;
-            _context.SaveChangesAsync();
+            var values = _context.CarFeatures.Where(x => x.CarFeatureID == id).FirstOrDefault();
+            values.isAvailable = true;
+            _context.SaveChanges();
         }
 
-        public void ChangeCarFeatureAvailableStatusToTrue(int id)
+        public void ChangeCarFeatureAvailableToFalse(int id)
         {
-            var value = _context.CarFeatures.Where(carFeature => carFeature.CarFeatureID == id).FirstOrDefault();
-            value.isAvailable = true;
-            _context.SaveChangesAsync();
+            var values = _context.CarFeatures.Where(x => x.CarFeatureID == id).FirstOrDefault();
+            values.isAvailable = false;
+            _context.SaveChanges();
         }
     }
 }

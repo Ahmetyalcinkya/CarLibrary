@@ -10,7 +10,7 @@ namespace Application.Interfaces.CarFeatureInterfaces
     public interface ICarFeatureRepository
     {
         List<CarFeature> GetCarFeatureByCarID(int id);
-        void ChangeCarFeatureAvailableStatusToFalse(int id);
-        void ChangeCarFeatureAvailableStatusToTrue(int id);
+        void ChangeCarFeatureAvailableToFalse(int id);
+        void ChangeCarFeatureAvailableToTrue(int id);
     }
 }

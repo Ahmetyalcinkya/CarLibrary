@@ -1,11 +1,12 @@
 ﻿using Dto.CarFeatureDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace WebUI.Areas.Admin.Controllers
 {
-    [Route("Admin/AdminCarFeatureDetail")]
     [Area("Admin")]
+    [Route("Admin/AdminCarFeatureDetail")]
     public class AdminCarFeatureDetailController : Controller
     {
 
@@ -16,6 +17,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [Route("Index/{id}")]
+        [HttpGet]
         public async Task<IActionResult> Index(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -27,6 +29,27 @@ namespace WebUI.Areas.Admin.Controllers
                 return View(values);
             }
             return View();
+        }
+
+        [HttpPost]
+        [Route("Index/{id}")]
+        public async Task<IActionResult> Index(List<ResultCarFeatureByCarIdDto> dtos)
+        {
+            foreach (var item in dtos)
+            {
+                if (item.isAvailable)
+                {
+                    var client = _httpClientFactory.CreateClient();
+                    await client.GetAsync("https://localhost:7199/api/CarFeatures/CarFeatureChangeAvailableToTrue?id=" + item.CarFeatureID);
+
+                }
+                else
+                {
+                    var client = _httpClientFactory.CreateClient();
+                    await client.GetAsync("https://localhost:7199/api/CarFeatures/CarFeatureChangeAvailableToFalse?id=" + item.CarFeatureID);
+                }
+            }
+            return RedirectToAction("Index", "AdminCar");
         }
     }
 }
