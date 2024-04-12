@@ -8,6 +8,7 @@ using Application.Features.RepositoryPattern;
 using Application.Interfaces;
 using Application.Interfaces.BlogInterfaces;
 using Application.Interfaces.BrandInterfaes;
+using Application.Interfaces.CarFeatureInterfaces;
 using Application.Interfaces.CarInterfaces;
 using Application.Interfaces.CarPricingInterfaces;
 using Application.Interfaces.RentACarInterfaces;
@@ -19,6 +20,7 @@ using Persistence.Context;
 using Persistence.Repositories;
 using Persistence.Repositories.BlogRepositories;
 using Persistence.Repositories.BrandRepositories;
+using Persistence.Repositories.CarFeatureRepositories;
 using Persistence.Repositories.CarPricingRepositories;
 using Persistence.Repositories.CarRepositories;
 using Persistence.Repositories.CommentRepositories;
@@ -39,6 +41,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<Comment>), typeof(CommentRe
 builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
 builder.Services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepository));
 builder.Services.AddScoped(typeof(IBrandRepository), typeof(BrandRepository));
+builder.Services.AddScoped(typeof(ICarFeatureRepository), typeof(CarFeatureRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
