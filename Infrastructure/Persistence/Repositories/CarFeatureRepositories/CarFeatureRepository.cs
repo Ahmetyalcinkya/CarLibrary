@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.CarFeatureInterfaces;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Persistence.Repositories.CarFeatureRepositories
 
         public List<CarFeature> GetCarFeatureByCarID(int id)
         {
-            var values = _context.CarFeatures.Where(carFeature => carFeature.CarID == id).ToList();
+            var values = _context.CarFeatures.Include(car => car.Features).Where(carFeature => carFeature.CarID == id).ToList();
             return values;
         }
     }
