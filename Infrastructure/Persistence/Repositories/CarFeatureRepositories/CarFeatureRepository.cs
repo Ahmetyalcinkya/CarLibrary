@@ -37,5 +37,11 @@ namespace Persistence.Repositories.CarFeatureRepositories
             values.isAvailable = false;
             _context.SaveChanges();
         }
+
+        public void CreateCarFeatureByCar(CarFeature feature)
+        {
+            _context.CarFeatures.Add(feature);
+            _context.SaveChanges();
+        }
     }
 }

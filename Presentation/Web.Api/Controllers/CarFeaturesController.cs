@@ -34,5 +34,11 @@ namespace Web.Api.Controllers
             _mediator.Send(new UpdateCarFeatureAvailableChangeToTrueCommand(id));
             return Ok("Update Operation Completed!");
         }
+        [HttpPost]
+        public async Task<IActionResult> CreateCarFeatureByCarID(CreateCarFeatureByCarCommand command)
+        {
+            _mediator.Send(command);
+            return Ok("Car Feature added to car!");
+        }
     }
 }
