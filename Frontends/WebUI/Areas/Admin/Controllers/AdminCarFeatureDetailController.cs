@@ -1,4 +1,5 @@
 ﻿using Dto.CarFeatureDtos;
+using Dto.FeatureDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -50,6 +51,21 @@ namespace WebUI.Areas.Admin.Controllers
                 }
             }
             return RedirectToAction("Index", "AdminCar");
+        }
+
+        [Route("CreateFeatureByCarID")]
+        [HttpGet]
+        public async Task<IActionResult> CreateFeatureByCarID()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7199/api/Features");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultFeatureDto>>(jsonData);
+                return View(values);
+            }
+            return View();
         }
     }
 }
