@@ -1,0 +1,37 @@
+﻿@model List<ResultCarPricingListWithModelDto>
+
+<div class="col-xl-6">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">Car Pricings</h4>
+            <p class="card-subtitle mb-4 font-size-13">
+                Here are some cars with daily, weekly, and monthly prices.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-centered table-hover table-xl mb-0" id="recent-orders">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">Model</th>
+                            <th class="border-top-0">Daily Price</th>
+                            <th class="border-top-0">Weekly Price</th>
+                            <th class="border-top-0">Monthly Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                        <tr>
+                            <td class="text-truncate">@item.Model</td>
+                            <td class="text-truncate">@item.DailyAmount ₺</td>
+                            <td class="text-truncate">@item.WeeklyAmount ₺</td>
+                            <td class="text-truncate">@item.MonthlyAmount ₺</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
