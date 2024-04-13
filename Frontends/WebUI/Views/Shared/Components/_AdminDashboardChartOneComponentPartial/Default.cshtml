@@ -1,0 +1,47 @@
+﻿<script src="~/chart.js"></script>
+
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            
+            <h4 class="card-title d-inline-block">Rental count per year</h4>
+
+            <div style="height: 260px;">
+                <canvas id="chartOne" style="height: auto; width: auto;"></canvas>
+                <script>
+                    var values = document.getElementById('chartOne').getContext('2d');
+                    var chart = new Chart(values, {
+                        type: 'line',
+                        data: {
+                            labels: ['2019', '2020', '2021', '2022', '2023'],
+                            datasets: [{
+                                label: 'Annual Rental Chart',
+                                data: [347, 294, 312, 427, 643],
+                                borderColor: 'rgba(72,192,192,1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+            <div class="row text-center mt-4">
+                <div class="col-6">
+                    <h4>$1875.54</h4>
+                    <p class="text-muted mb-0">Revenue</p>
+                </div>
+                <div class="col-6">
+                    <h4>541</h4>
+                    <p class="text-muted mb-0">Total Offers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
