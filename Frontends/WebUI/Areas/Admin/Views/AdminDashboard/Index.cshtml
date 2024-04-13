@@ -5,19 +5,12 @@
 
 <div class="page-content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box d-flex align-items-center justify-content-between">
-                    <h4 class="mb-0 font-size-18">Dashboard</h4>
-                </div>
-            </div>
-        </div>
 
         @await Component.InvokeAsync("_AdminDashboardStatisticsComponentPartial")
 
         <div class="row">
-            @await Component.InvokeAsync("_AdminDashboardChartOneComponentPartial")
             @await Component.InvokeAsync("_AdminDashboardChartTwoComponentPartial")
+            @await Component.InvokeAsync("_AdminDashboardChartOneComponentPartial")
             @await Component.InvokeAsync("_AdminDashboardChartThreeComponentPartial")
         </div>
         <div class="row">
@@ -26,16 +19,3 @@
         </div>
     </div>
 </div>
-
-<script src="~/Admin/vertical/assets/js/jquery.min.js"></script>
-<script src="~/Admin/vertical/assets/js/bootstrap.bundle.min.js"></script>
-<script src="~/Admin/vertical/assets/js/metismenu.min.js"></script>
-<script src="~/Admin/vertical/assets/js/waves.js"></script>
-<script src="~/Admin/vertical/assets/js/simplebar.min.js"></script>
-
-<script src="~/Admin/plugins/morris-js/morris.min.js"></script>
-<script src="~/Admin/plugins/raphael/raphael.min.js"></script>
-
-<script src="~/Admin/vertical/assets/pages/dashboard-demo.js"></script>
-
-<script src="~/Admin/vertical/assets/js/theme.js"></script>
