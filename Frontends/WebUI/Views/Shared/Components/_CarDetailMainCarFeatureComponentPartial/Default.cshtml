@@ -1,10 +1,12 @@
-﻿<div class="row justify-content-center">
+﻿@model ResultCarWithBrandsDto
+
+<div class="row justify-content-center">
     <div class="col-md-12">
         <div class="car-details">
-            <div class="img rounded" style="background-image: url(images/bg_1.jpg);"></div>
+            <div class="img rounded" style="background-image: url(@Model.CarCoverImageUrl);"></div>
             <div class="text text-center">
-                <span class="subheading">Cheverolet</span>
-                <h2>Mercedes Grand Sedan</h2>
+                <span class="subheading">@Model.BrandName</span>
+                <h2>@Model.Model</h2>
             </div>
         </div>
     </div>
@@ -19,7 +21,7 @@
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
                             Mileage
-                            <span>40,000</span>
+                            <span>@Model.MileAge</span>
                         </h3>
                     </div>
                 </div>
@@ -34,7 +36,7 @@
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
                             Transmission
-                            <span>Manual</span>
+                            <span>@Model.Transmission</span>
                         </h3>
                     </div>
                 </div>
@@ -49,7 +51,7 @@
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
                             Seats
-                            <span>5 Adults</span>
+                            <span>@Model.Seat</span>
                         </h3>
                     </div>
                 </div>
@@ -64,7 +66,7 @@
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
                             Luggage
-                            <span>4 Bags</span>
+                            <span>@Model.Luggage</span>
                         </h3>
                     </div>
                 </div>
@@ -79,7 +81,7 @@
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
                             Fuel
-                            <span>Petrol</span>
+                            <span>@Model.Fuel</span>
                         </h3>
                     </div>
                 </div>
