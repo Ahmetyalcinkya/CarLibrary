@@ -4,6 +4,7 @@ using Persistence.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,6 +30,7 @@ namespace Persistence.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
+
         public async Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);
@@ -44,6 +46,10 @@ namespace Persistence.Repositories
         {
             _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
+        }
+        public Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        {
+            return _context.Set<T>().SingleOrDefaultAsync(filter);
         }
     }
 }
