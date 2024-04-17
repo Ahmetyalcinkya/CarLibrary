@@ -19,6 +19,8 @@ using Application.Interfaces.TagCloudInterfaces;
 using Application.Services;
 using Domain.Entities;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Persistence.Context;
 using Persistence.Repositories;
 using Persistence.Repositories.BlogRepositories;
@@ -32,8 +34,24 @@ using Persistence.Repositories.RentACarRepositories;
 using Persistence.Repositories.ReviewRepositories;
 using Persistence.Repositories.StatisticsRepositories;
 using Persistence.Repositories.TagCloudRepositories;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// JWT Configuration
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.RequireHttpsMetadata = false;
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidAudience = "https://localhost",
+        ValidIssuer = "http://localhost",
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("carlibrary042024")),
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true
+    };
+});
 
 // Add services to the container.
 builder.Services.AddScoped<CarBookContext>();
