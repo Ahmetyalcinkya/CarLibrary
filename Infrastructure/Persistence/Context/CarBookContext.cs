@@ -15,6 +15,8 @@ namespace Persistence.Context
             string connectionString = GetPostgreSQLConnectionString();
             optionsBuilder.UseNpgsql(connectionString);
         }
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<Brand> Brands { get; set; }
