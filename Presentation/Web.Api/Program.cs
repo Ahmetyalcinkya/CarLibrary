@@ -18,6 +18,7 @@ using Application.Interfaces.StatisticsInterfaces;
 using Application.Interfaces.TagCloudInterfaces;
 using Application.Services;
 using Domain.Entities;
+using FluentValidation.AspNetCore;
 using Persistence.Context;
 using Persistence.Repositories;
 using Persistence.Repositories.BlogRepositories;
@@ -90,7 +91,12 @@ builder.Services.AddScoped<RemoveContactCommandHandler>();
 
 builder.Services.AddApplicationService(builder.Configuration);
 
-builder.Services.AddControllers();
+//Fluent validation configuration!
+builder.Services.AddControllers().AddFluentValidation(x =>
+{
+    x.RegisterValidatorsFromAssembly(System.Reflection.Assembly.GetExecutingAssembly());
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

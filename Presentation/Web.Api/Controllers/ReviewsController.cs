@@ -1,4 +1,6 @@
-﻿using Application.Features.Mediator.Queries.ReviewQueries;
+﻿using Application.Features.Mediator.Commands.ReviewCommands;
+using Application.Features.Mediator.Queries.ReviewQueries;
+using Application.Validators.ReviewValidators;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +22,25 @@ namespace Web.Api.Controllers
         {
             var values = await _mediator.Send(new GetReviewByCarIdQuery(id));
             return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateReview(CreateReviewCommand command)
+        {
+            CreateReviewValidator validator = new CreateReviewValidator();
+            var validationResult = validator.Validate(command);
+            if(!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+            await _mediator.Send(command);
+            return Ok("Review saved successfully!");
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateReview(UpdateReviewCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("Review updated successfully!");
         }
     }
 }
