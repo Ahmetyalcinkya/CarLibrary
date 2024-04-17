@@ -13,6 +13,7 @@ using Application.Interfaces.CarFeatureInterfaces;
 using Application.Interfaces.CarInterfaces;
 using Application.Interfaces.CarPricingInterfaces;
 using Application.Interfaces.RentACarInterfaces;
+using Application.Interfaces.ReviewInterfaces;
 using Application.Interfaces.StatisticsInterfaces;
 using Application.Interfaces.TagCloudInterfaces;
 using Application.Services;
@@ -27,6 +28,7 @@ using Persistence.Repositories.CarPricingRepositories;
 using Persistence.Repositories.CarRepositories;
 using Persistence.Repositories.CommentRepositories;
 using Persistence.Repositories.RentACarRepositories;
+using Persistence.Repositories.ReviewRepositories;
 using Persistence.Repositories.StatisticsRepositories;
 using Persistence.Repositories.TagCloudRepositories;
 
@@ -45,6 +47,7 @@ builder.Services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepositor
 builder.Services.AddScoped(typeof(IBrandRepository), typeof(BrandRepository));
 builder.Services.AddScoped(typeof(ICarFeatureRepository), typeof(CarFeatureRepository));
 builder.Services.AddScoped(typeof(ICarDescriptionRepository), typeof(CarDescriptionRepository));
+builder.Services.AddScoped(typeof(IReviewRepository), typeof(ReviewRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
