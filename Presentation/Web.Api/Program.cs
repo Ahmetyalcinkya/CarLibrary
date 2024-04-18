@@ -39,6 +39,7 @@ using System.Text;
 using Web.Api.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpClient();
 
 // SIGNALR Configuration
 builder.Services.AddCors(opt =>

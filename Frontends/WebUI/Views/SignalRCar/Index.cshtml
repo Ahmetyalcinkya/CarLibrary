@@ -19,8 +19,15 @@
                                 $("#constatus").text(connection.state);
                                 connection.start().then(() => {
                                     $("#constatus").text(connection.state);
+                                    setInterval(() => {
+                                        connection.invoke("SendCarCount");
+                                    }, 1000);
                                 }).catch((err) => {
                                     console.log(err)
+                                });
+
+                                connection.on("ReceiveCarCount", (value) => {
+                                    $("#carcount").text(value);
                                 });
                             });    
                         </script>
@@ -35,6 +42,11 @@
     <div class="col-md-8 offset-2">
         <div class="alert alert-info">
             Connection Status : <strong id="constatus"></strong>
+        </div>
+    </div>
+    <div class="col-md-8 offset-2">
+        <div class="alert alert-danger">
+            Car Count : <strong id="carcount"></strong>
         </div>
     </div>
 </div>
