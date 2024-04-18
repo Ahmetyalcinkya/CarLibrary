@@ -146,3 +146,7 @@ C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\App
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\MediatR.dll
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\MediatR.Contracts.dll
 C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\ahmet\source\repos\CarLibrary\Presentation\Web.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
