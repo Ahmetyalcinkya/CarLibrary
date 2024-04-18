@@ -17,12 +17,13 @@ namespace WebUI.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Index()
 		{
-            var token = User.Claims.FirstOrDefault(x => x.Type == "carlibrarytoken")?.Value;
+			// Kullanıcıların giriş yaparak sayfadaki içerikleri görmesini istiyorsan yorum satırı olan komutları istediğin sayfalarda aktifleştirerek kullanabilir ve kullanıcıların login olmadan sayfaları görmesini engelleyebilirsin!..
+   //         var token = User.Claims.FirstOrDefault(x => x.Type == "carlibrarytoken")?.Value;
 
-			if (token != null)
-			{
+			//if (token != null)
+			//{
 				var client = _httpClientFactory.CreateClient();
-				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+				//client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
 				var responseMessage = await client.GetAsync("https://localhost:7199/api/Locations");
 
@@ -35,7 +36,7 @@ namespace WebUI.Controllers
 													 Value = x.LocationID.ToString(),
 												 }).ToList();
 				ViewBag.ddvalues = ddvalues;
-			}
+			//}
 			return View();
 		}
 

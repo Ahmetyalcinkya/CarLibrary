@@ -36,8 +36,22 @@ using Persistence.Repositories.ReviewRepositories;
 using Persistence.Repositories.StatisticsRepositories;
 using Persistence.Repositories.TagCloudRepositories;
 using System.Text;
+using Web.Api.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// SIGNALR Configuration
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CarLibraryPolicy", builder =>
+    {
+        builder.AllowAnyHeader()
+        .AllowAnyMethod()
+        .SetIsOriginAllowed((host) => true)
+        .AllowCredentials();
+    });
+});
+builder.Services.AddSignalR();
 
 // JWT Configuration
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
@@ -129,10 +143,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CarLibraryPolicy");
+
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<CarHub>("/carhub");
 
 app.Run();
