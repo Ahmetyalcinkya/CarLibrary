@@ -25,7 +25,10 @@ namespace Application.Features.Mediator.Handlers.AppUserHandlers
             {
                 Password = request.Password,
                 Username = request.Username,
-                AppRoleID = (int) Roles.Member
+                AppRoleID = (int) Roles.Member,
+                Email = request.Email,
+                Name = request.Name,
+                Surname = request.Surname,
             });
         }
     }
