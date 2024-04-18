@@ -1,10 +1,12 @@
 ﻿using Dto.ServiceDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("Admin/AdminService")]
     [Area("Admin")]
     public class AdminServiceController : Controller

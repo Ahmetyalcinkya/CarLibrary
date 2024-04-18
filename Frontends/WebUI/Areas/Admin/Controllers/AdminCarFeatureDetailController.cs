@@ -1,11 +1,13 @@
 ﻿using Dto.CarFeatureDtos;
 using Dto.FeatureDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminCarFeatureDetail")]
     public class AdminCarFeatureDetailController : Controller

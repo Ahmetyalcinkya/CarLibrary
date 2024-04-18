@@ -1,9 +1,11 @@
 ﻿using Dto.StatisticsDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("Admin/AdminStatistics")]
     [Area("Admin")]
     public class AdminStatisticsController : Controller

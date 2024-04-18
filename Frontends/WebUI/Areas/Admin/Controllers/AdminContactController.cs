@@ -1,9 +1,11 @@
 ﻿using Dto.ContactDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("Admin/AdminContact")]
     [Area("Admin")]
     public class AdminContactController : Controller
