@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.CarCommands;
 using Application.Features.CQRS.Handlers.CarHandlers;
 using Application.Features.CQRS.Queries.CarQueries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -53,18 +54,21 @@ namespace Web.Api.Controllers
             var values = _getLastFiveCarsWithBrandQueryHandler.Handle();
             return Ok(values);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateCar(CreateCarCommand command)
         {
             await _createCarCommandHandler.Handle(command);
             return Ok("Car created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateCar(UpdateCarCommand command)
         {
             await _updateCarCommandHandler.Handle(command);
             return Ok("Car updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {

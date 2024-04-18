@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.ContactCommands;
 using Application.Features.CQRS.Handlers.ContactHandlers;
 using Application.Features.CQRS.Queries.ContactQueries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,18 +36,21 @@ namespace Web.Api.Controllers
             var value = await _getContactByIdQueryHandler.Handle(new GetContactByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateContact(CreateContactCommand command)
         {
             await _createContactCommandHandler.Handle(command);
             return Ok("Contact successfully created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateContact(UpdateContactCommand command)
         {
             await _updateContactCommandHandler.Handle(command);
             return Ok("Contact successfully updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveContact(int id)
         {

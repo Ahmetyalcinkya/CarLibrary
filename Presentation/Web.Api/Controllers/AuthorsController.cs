@@ -1,6 +1,7 @@
 ﻿using Application.Features.Mediator.Commands.AuthorCommands;
 using Application.Features.Mediator.Queries.AuthorQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,18 +28,21 @@ namespace Web.Api.Controllers
             var value = await _mediator.Send(new GetAuthorByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateAuthor(CreateAuthorCommand command)
         {
             await _mediator.Send(command);
             return Ok("Author created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateAuthor(UpdateAuthorCommand command)
         {
             await _mediator.Send(command);
             return Ok("Author updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveAuthor(int id)
         {

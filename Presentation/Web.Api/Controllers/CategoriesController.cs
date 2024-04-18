@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.CategoryCommands;
 using Application.Features.CQRS.Handlers.CategoryHandlers;
 using Application.Features.CQRS.Queries.CategoryQueries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,18 +36,21 @@ namespace Web.Api.Controllers
             var value = await _getCategoryByIdQueryHandler.Handle(new GetCategoryByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryCommand command)
         {
             await _createCategoryCommandHandler.Handle(command);
             return Ok("Category created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryCommand command)
         {
             await _updateCategoryCommandHandler.Handle(command);
             return Ok("Category updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveCategory(int id)
         {

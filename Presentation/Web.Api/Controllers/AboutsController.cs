@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.AboutCommands;
 using Application.Features.CQRS.Handlers.AboutHandlers;
 using Application.Features.CQRS.Queries.AboutQueries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,18 +37,21 @@ namespace Web.Api.Controllers
             var value = await _getAboutByIdQueryHandler.Handle(new GetAboutByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateAbout(CreateAboutCommand command)
         {
             await _createCommandHandler.Handle(command);
             return Ok("About information added!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveAbout(int id)
         {
             await _removeAboutCommandHandler.Handle(new RemoveAboutCommand(id));
             return Ok("About information deleted!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateAbout(UpdateAboutCommand command)
         {

@@ -1,6 +1,7 @@
 ﻿using Application.Features.Mediator.Commands.CarFeatureCommands;
 using Application.Features.Mediator.Queries.CarFeatureQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,6 +35,7 @@ namespace Web.Api.Controllers
             _mediator.Send(new UpdateCarFeatureAvailableChangeToTrueCommand(id));
             return Ok("Update Operation Completed!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateCarFeatureByCarID(CreateCarFeatureByCarCommand command)
         {

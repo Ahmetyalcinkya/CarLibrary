@@ -1,6 +1,7 @@
 ﻿using Application.Features.Mediator.Commands.FooterAddressCommands;
 using Application.Features.Mediator.Queries.FooterAddressQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,18 +29,21 @@ namespace Web.Api.Controllers
             var value = await _mediator.Send(new GetFooterAddressByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateFooterAddress(CreateFooterAddressCommand command)
         {
             await _mediator.Send(command);
             return Ok("Footer address information successfully created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateFooterAddress(UpdateFooterAddressCommand command)
         {
             await _mediator.Send(command);
             return Ok("Footer address information successfully created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveFooterAddress(int id)
         { 

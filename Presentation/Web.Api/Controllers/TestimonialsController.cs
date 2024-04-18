@@ -1,6 +1,7 @@
 ﻿using Application.Features.Mediator.Commands.TestimonialCommands;
 using Application.Features.Mediator.Queries.TestimonialQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,18 +28,21 @@ namespace Web.Api.Controllers
             var value = await _mediator.Send(new GetTestimonialByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateTestimonial(CreateTestimonialCommand command)
         {
             await _mediator.Send(command);
             return Ok("Testimonial created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateTestimonial(UpdateTestimonialCommand command)
         {
             await _mediator.Send(command);
             return Ok("Testimonial updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveTestimonial(int id)
         {

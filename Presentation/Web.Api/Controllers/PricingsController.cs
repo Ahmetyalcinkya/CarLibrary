@@ -1,6 +1,7 @@
 ﻿using Application.Features.Mediator.Commands.PricingCommands;
 using Application.Features.Mediator.Queries.PricingQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,18 +28,21 @@ namespace Web.Api.Controllers
             var value = await _mediator.Send(new GetPricingByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreatePricing(CreatePricingCommand command)
         {
             await _mediator.Send(command);
             return Ok("Pricing created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdatePricing(UpdatePricingCommand command)
         {
             await _mediator.Send(command);
             return Ok("Pricing updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemovePricing(int id)
         {

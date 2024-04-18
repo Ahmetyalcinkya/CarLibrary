@@ -2,6 +2,7 @@
 using Application.Features.Mediator.Queries.ReviewQueries;
 using Application.Validators.ReviewValidators;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,7 @@ namespace Web.Api.Controllers
             await _mediator.Send(command);
             return Ok("Review saved successfully!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateReview(UpdateReviewCommand command)
         {

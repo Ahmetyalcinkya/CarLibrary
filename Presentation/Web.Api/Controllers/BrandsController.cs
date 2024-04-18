@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.BrandCommands;
 using Application.Features.CQRS.Handlers.BrandHandlers;
 using Application.Features.CQRS.Queries.BrandQueries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,18 +36,21 @@ namespace Web.Api.Controllers
             var value = await _getBrandByIdQueryHandler.Handle(new GetBrandByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateBrand(CreateBrandCommand command)
         {
             await _createBrandCommandHandler.Handle(command);
             return Ok("Brand successfully created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateBrand(UpdateBrandCommand command)
         {
             await _updateBrandCommandHandler.Handle(command);
             return Ok("Brand successfully updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveBrand(int id)
         {

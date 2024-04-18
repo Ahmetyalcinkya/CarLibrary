@@ -1,6 +1,7 @@
 ﻿using Application.Features.Mediator.Commands.SocialMediaCommands;
 using Application.Features.Mediator.Queries.SocialMediaQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,18 +28,21 @@ namespace Web.Api.Controllers
             var value = await _mediator.Send(new GetSocialMediaByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateSocialMedia(CreateSocialMediaCommand command)
         {
             await _mediator.Send(command);
             return Ok("Social media successfully created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateSocialMedia(UpdateSocialMediaCommand command)
         {
             await _mediator.Send(command);
             return Ok("Social media successfully updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveSocialMedia(int id)
         {

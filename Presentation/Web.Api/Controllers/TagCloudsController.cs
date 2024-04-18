@@ -1,6 +1,7 @@
 ﻿using Application.Features.Mediator.Commands.TagCloudCommands;
 using Application.Features.Mediator.Queries.TagCloudQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,18 +34,21 @@ namespace Web.Api.Controllers
             var values = await _mediator.Send(new GetTagCloudsByBlogIdQuery(id));
             return Ok(values);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateTagCloud(CreateTagCloudCommand command)
         {
             await _mediator.Send(command);
             return Ok("Tag Cloud successfully created!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateTagCloud(UpdateTagCloudCommand command)
         {
             await _mediator.Send(command);
             return Ok("Tag Cloud successfully updated!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveTagCloud(int id)
         {

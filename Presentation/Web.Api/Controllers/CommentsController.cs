@@ -2,6 +2,7 @@
 using Application.Features.RepositoryPattern;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,24 +43,28 @@ namespace Web.Api.Controllers
             var value = _commentRepository.CommentCountByBlog(id);
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult CreateComment(Comment comment)
         {
             _commentRepository.Create(comment);
             return Ok("Comment saved successfully!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost("CreateCommentWithMediator")]
         public IActionResult CreateCommentWithMediator(CreateCommentCommand command)
         {
             _mediator.Send(command);
             return Ok("Comment saved successfully!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult UpdateComment(Comment comment)
         {
             _commentRepository.Update(comment);
             return Ok("Comment updated successfully!");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public IActionResult RemoveComment(int id)
         {
